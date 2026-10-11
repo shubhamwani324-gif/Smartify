@@ -4,9 +4,10 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import MobileStickyCart from './components/MobileStickyCart';
-import PincodeModal from './components/PincodeModal';
+import DeliveryAddressModal from './components/DeliveryAddressModal';
 import AuthModal from './components/AuthModal';
 import ProductDetailModal from './components/ProductDetailModal';
+import SplashOpening from './components/SplashOpening';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -38,6 +39,9 @@ export default function App() {
 
   return (
     <div className="app-container">
+      {/* Premium Opening Experience (1-2s brand reveal) */}
+      <SplashOpening />
+
       {/* Top Navbar */}
       <Navbar
         onOpenAdmin={() => navigateTo('admin')}
@@ -119,8 +123,8 @@ export default function App() {
         />
       )}
 
-      {/* Pincode Modal */}
-      <PincodeModal />
+      {/* Delivery Address & Location Modal */}
+      <DeliveryAddressModal />
 
       {/* Auth Modal */}
       <AuthModal />

@@ -8,27 +8,27 @@ export default function CompactHero({ onShopNow }) {
     <div className="qc-hero-banner">
       <div className="qc-hero-content">
         <div className="qc-hero-badge">
-          <Zap size={14} fill="#ffffff" /> 10-Minute Smart Home Essentials
+          <Zap size={14} fill="#ffffff" /> Express Smart Home Essentials
         </div>
         <h1 className="qc-hero-title">
           Ghar Ko Smart Banao,<br />Budget Ke Andar.
         </h1>
         <p className="qc-hero-desc">
-          Top-rated Wi-Fi smart bulbs, high-load plugs, 360° security cameras, and sensors delivered to your doorstep in minutes.
+          Top-rated Wi-Fi smart bulbs, high-load plugs, 360° security cameras, and sensors delivered fast with simple pricing.
         </p>
 
         <div className="qc-hero-features">
           <div className="qc-hero-feature-item">
-            <Zap size={15} /> 10-Min Fast Delivery*
+            <Zap size={15} /> Express Dispatch
           </div>
           <div className="qc-hero-feature-item">
-            <ShieldCheck size={15} /> 1-Year Warranty
+            <ShieldCheck size={15} /> 1-Year Brand Warranty
           </div>
           <div className="qc-hero-feature-item">
             <CheckCircle2 size={15} /> 100% Genuine Brands
           </div>
           <div className="qc-hero-feature-item">
-            <CreditCard size={15} /> Secure Razorpay (UPI & Cards)
+            <CreditCard size={15} /> Secure Razorpay (UPI, Cards & NetBanking)
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function CompactHero({ onShopNow }) {
           Explore Smart Catalog <ArrowRight size={17} />
         </button>
         <span style={{ fontSize: '0.68rem', color: 'var(--qc-muted)', fontWeight: 600 }}>
-          *10-min delivery active in supported dark store clusters
+          ⚡ Express dark-store delivery in supported zones (Demo Prototype)
         </span>
       </div>
     </div>

@@ -74,7 +74,38 @@ export const api = {
 
   getMe: () => request('/auth/me'),
 
-  // Addresses
+  // Google OAuth
+  getGoogleConfig: () => request('/auth/google/config'),
+  verifyGoogleToken: (credential) => {
+    return request('/auth/google/verify', {
+      method: 'POST',
+      body: JSON.stringify({ credential })
+    });
+  },
+
+  // Phone OTP
+  sendOtp: (phone) => {
+    return request('/auth/otp/send', {
+      method: 'POST',
+      body: JSON.stringify({ phone })
+    });
+  },
+
+  resendOtp: (phone) => {
+    return request('/auth/otp/resend', {
+      method: 'POST',
+      body: JSON.stringify({ phone })
+    });
+  },
+
+  verifyOtp: (payload) => {
+    return request('/auth/otp/verify', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+  },
+
+  // Delivery Addresses
   getAddresses: () => request('/addresses'),
 
   addAddress: (addressData) => {
@@ -84,11 +115,26 @@ export const api = {
     });
   },
 
+  updateAddress: (id, addressData) => {
+    return request(`/addresses/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(addressData)
+    });
+  },
+
   deleteAddress: (id) => {
     return request(`/addresses/${id}`, {
       method: 'DELETE'
     });
   },
+
+  setDefaultAddress: (id) => {
+    return request(`/addresses/${id}/default`, {
+      method: 'POST'
+    });
+  },
+
+  reverseGeocode: (lat, lon) => request(`/addresses/reverse-geocode?lat=${lat}&lon=${lon}`),
 
   // Payment & Gateway Configurations
   getPaymentConfig: () => request('/payment/config'),

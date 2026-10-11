@@ -114,38 +114,38 @@ export default function OrderSuccessPage({ orderId, onContinueShopping, onViewOr
     }
   };
 
-  // Realistic quick-commerce timeline steps
+  // Polished order tracking timeline steps
   const steps = [
     {
       title: 'Order Placed',
-      desc: `Order ${order.order_number || order.id} created with status PENDING`,
-      time: order.created_at ? new Date(order.created_at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) : 'Just now',
+      desc: `Order ${order.order_number || order.id} created successfully`,
+      time: order.created_at ? new Date(order.created_at).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) : 'Confirmed',
       status: 'completed'
     },
     {
-      title: 'Payment Confirmation (Razorpay)',
+      title: 'Payment Confirmed',
       desc: isPaid
         ? `Payment captured securely via Razorpay (Ref: ${order.razorpay_payment_id || order.payment_id || 'Captured'})`
-        : 'Payment verification in progress with bank gateway',
-      time: isPaid ? 'Verified' : 'Pending',
+        : 'Payment verification in progress with Razorpay gateway',
+      time: isPaid ? 'Captured' : 'Pending',
       status: isPaid ? 'completed' : 'active'
     },
     {
-      title: 'Packing at Local Express Dark Store',
-      desc: 'Assigned to SMARTIFY Micro-Hub #12 • Items quality checked',
+      title: 'Preparing',
+      desc: isPaid ? 'Packed at SMARTIFY Local Dark Store • Items verified' : 'Will prepare once payment is verified',
       time: isPaid ? 'In Progress' : 'Queued',
       status: isPaid ? 'active' : 'pending'
     },
     {
       title: 'Out for Delivery',
-      desc: 'Delivery partner assigned with verified smart home safety bag',
+      desc: 'Local delivery partner assigned with tamper-proof smart box',
       time: 'Next step',
       status: 'pending'
     },
     {
-      title: 'Delivered to Doorstep',
+      title: 'Delivered',
       desc: `${order.shipping_address?.house_flat || ''}, ${order.shipping_address?.city || ''}`,
-      time: isPaid ? 'Estimated in 10-15 mins' : 'Pending payment confirmation',
+      time: isPaid ? 'Est: ~25-40 mins' : 'Awaiting payment',
       status: 'pending'
     }
   ];
@@ -163,7 +163,7 @@ export default function OrderSuccessPage({ orderId, onContinueShopping, onViewOr
             {isPaid ? <CheckCircle2 size={44} /> : <Clock size={44} />}
           </div>
 
-          {/* EXACT HEADERS AS REQUIRED */}
+          {/* Status Headers */}
           {isPaid ? (
             <>
               <h1 style={{ fontSize: '1.75rem', fontWeight: 900, color: 'var(--qc-dark)', marginBottom: '0.35rem' }}>
@@ -184,54 +184,16 @@ export default function OrderSuccessPage({ orderId, onContinueShopping, onViewOr
             </>
           )}
 
-          {/* Quick-Commerce Estimated Arrival Time */}
+          {/* Realistic ETA Label */}
           <div className="qc-tracking-eta-pill">
             <Zap size={16} fill="var(--qc-dark)" />
             <span>
               {isPaid
-                ? '⚡ Express Delivery in 10-15 Minutes to ' + (order.shipping_address?.pincode || '')
-                : '⚡ Delivery partner will be dispatched immediately once payment is confirmed'}
+                ? '⚡ Demo Prototype: Estimated Delivery in ~25–40 mins to ' + (order.shipping_address?.pincode || '')
+                : '⚡ Delivery partner will be dispatched once payment is confirmed'}
             </span>
           </div>
         </div>
-
-        {/* UTR Submission Box if still Pending (only for direct_upi) */}
-        {!isPaid && order.payment_method === 'direct_upi' && (
-          <div style={{ margin: '1.25rem 0', padding: '1.25rem', background: '#fffbeb', border: '1.5px solid #fde68a', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#92400e', marginBottom: '0.35rem' }}>
-              Have you completed the UPI transfer to 8468990113@ibl?
-            </div>
-            <div style={{ fontSize: '0.78rem', color: '#78350f', marginBottom: '0.75rem' }}>
-              Please enter your 12-digit UPI Reference / UTR Number from Google Pay, PhonePe, Paytm, or your banking app. This helps our administrator confirm your order instantly.
-            </div>
-
-            {utrSuccessMsg && (
-              <div style={{ padding: '0.5rem 0.75rem', backgroundColor: '#dcfce7', border: '1px solid #bbf7d0', borderRadius: '4px', color: '#15803d', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.75rem' }}>
-                ✓ {utrSuccessMsg}
-              </div>
-            )}
-
-            <form onSubmit={handleSubmitUtr} style={{ display: 'flex', gap: '0.5rem' }}>
-              <input
-                type="text"
-                className="qc-form-input"
-                placeholder="Enter 12-digit UPI UTR Number"
-                value={utrInput}
-                onChange={(e) => setUtrInput(e.target.value.replace(/[^a-zA-Z0-9]/g, ''))}
-                maxLength={20}
-                style={{ fontSize: '0.84rem' }}
-              />
-              <button
-                type="submit"
-                className="btn-primary"
-                disabled={utrSubmitting || !utrInput.trim()}
-                style={{ fontSize: '0.82rem', padding: '0.5rem 1.1rem', flexShrink: 0 }}
-              >
-                {utrSubmitting ? 'Submitting...' : 'Submit UTR'}
-              </button>
-            </form>
-          </div>
-        )}
 
         {/* Live Delivery Progress Stepper */}
         <div style={{ padding: '1.75rem 0', borderBottom: '1px solid var(--qc-border-light)' }}>

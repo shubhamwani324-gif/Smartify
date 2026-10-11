@@ -262,15 +262,36 @@ export default function CheckoutPage({ onBackToCart, onOrderSuccess }) {
         theme: {
           color: '#059669' // SMARTIFY Emerald
         },
-        // Automatically prioritizes UPI (Google Pay, PhonePe, Paytm, Any UPI ID/QR) followed by Cards & NetBanking
-        // Supported Razorpay Checkout Configuration
-        // Allows all dashboard-configured methods (UPI, Cards, Netbanking, Wallets)
+        // Official Razorpay Standard Checkout display blocks
+        // Prioritizes UPI (Google Pay, PhonePe, Paytm, BHIM, QR) while keeping Cards, NetBanking, Wallets
         config: {
           display: {
+            blocks: {
+              upi: {
+                name: 'UPI / QR (Google Pay, PhonePe, Paytm)',
+                instruments: [
+                  { method: 'upi' }
+                ]
+              },
+              other: {
+                name: 'Debit/Credit Cards, NetBanking & Wallets',
+                instruments: [
+                  { method: 'card' },
+                  { method: 'netbanking' },
+                  { method: 'wallet' }
+                ]
+              }
+            },
+            sequence: ['block.upi', 'block.other'],
             preferences: {
               show_default_blocks: true
             }
           }
+        },
+        notes: {
+          platform: 'SMARTIFY Smart Home',
+          order_id: res.order_id,
+          order_number: res.order_number
         },
         handler: async function (response) {
           // Automatic Payment Confirmation

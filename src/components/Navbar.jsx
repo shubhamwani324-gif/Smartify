@@ -27,7 +27,7 @@ export default function Navbar({ onOpenAdmin, onViewOrders, onViewWishlist, onSe
   const { user, isAdmin, logout, openAuthModal } = useAuth();
   const { items, itemCount, cartTotals, openCart, addToCart, updateQuantity, getItemQuantity } = useCart();
   const { wishlistCount } = useWishlist();
-  const { pincodeData, openPincodeModal } = useLocation();
+  const { pincodeData, selectedAddress, openAddressModal } = useLocation();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
@@ -82,17 +82,15 @@ export default function Navbar({ onOpenAdmin, onViewOrders, onViewWishlist, onSe
     if (onSelectProduct) onSelectProduct(product);
   };
 
-  const deliveryCity = pincodeData?.city ? pincodeData.city.split(',')[0].trim() : 'Express Hub';
-  const deliveryPincode = pincodeData?.pincode || '110001';
-  const isExpressDelivery = pincodeData?.pincode?.startsWith('11') || pincodeData?.pincode?.startsWith('20') || pincodeData?.pincode?.startsWith('56') || pincodeData?.pincode?.startsWith('40');
-  const deliveryEstimate = isExpressDelivery ? '10 mins' : '1-2 days';
+  const deliveryCity = selectedAddress?.city || (pincodeData?.city ? pincodeData.city.split(',')[0].trim() : 'Express Hub');
+  const deliveryPincode = selectedAddress?.pincode || pincodeData?.pincode || '110001';
 
   return (
     <header className="qc-navbar">
       <div className="qc-navbar-inner">
         {/* Brand Logo with Lightning Quick-Commerce Badge */}
         <a href="/" className="qc-brand" onClick={(e) => { e.preventDefault(); window.location.href = '/'; }}>
-          <div className="qc-brand-badge" title="SMARTIFY 10-Min Smart Home">
+          <div className="qc-brand-badge" title="SMARTIFY Smart Home">
             ⚡
           </div>
           <div className="qc-brand-text">
@@ -101,22 +99,24 @@ export default function Navbar({ onOpenAdmin, onViewOrders, onViewWishlist, onSe
           </div>
         </a>
 
-        {/* Delivery Location & 10-Min ETA Selector */}
+        {/* Delivery Location & Address Selector */}
         <button
           type="button"
           className="qc-location-pill"
-          onClick={openPincodeModal}
-          title="Change delivery location"
+          onClick={openAddressModal}
+          title="Change delivery location / address"
         >
           <div className="qc-location-icon">
             <MapPin size={18} />
           </div>
           <div className="qc-location-text">
             <div className="qc-location-eta">
-              Delivery in <span className="highlight">{deliveryEstimate}</span>
+              {selectedAddress ? `${selectedAddress.tag || 'Home'} Delivery` : 'Deliver to'}
             </div>
             <div className="qc-location-address">
-              {deliveryCity} ({deliveryPincode}) ▾
+              {selectedAddress
+                ? `${selectedAddress.house_flat ? selectedAddress.house_flat.slice(0, 16) + '..., ' : ''}${selectedAddress.pincode}`
+                : `${deliveryCity} (${deliveryPincode})`} ▾
             </div>
           </div>
         </button>

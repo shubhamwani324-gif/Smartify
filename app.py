@@ -20,6 +20,9 @@ import qrcode.constants
 import jwt
 import razorpay
 import razorpay.errors
+import requests
+import secrets
+import re
 
 # Load environment variables
 ENV_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
@@ -59,6 +62,36 @@ razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 
 UPI_ID = os.getenv('SMARTIFY_UPI_ID', '8468990113@ibl').strip()
 UPI_MERCHANT_NAME = os.getenv('SMARTIFY_UPI_NAME', 'SMARTIFY').strip()
+
+# Google OAuth 2.0 Credentials (Configured via Environment Variables)
+GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID', '').strip()
+GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET', '').strip()
+GOOGLE_REDIRECT_URI = os.getenv('GOOGLE_REDIRECT_URI', 'http://localhost:5000').strip()
+
+# Indian SMS & OTP Provider Configuration
+SMS_PROVIDER = os.getenv('SMS_PROVIDER', 'dev').strip().lower()
+FAST2SMS_API_KEY = os.getenv('FAST2SMS_API_KEY', '').strip()
+TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID', '').strip()
+TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN', '').strip()
+TWILIO_PHONE_NUMBER = os.getenv('TWILIO_PHONE_NUMBER', '').strip()
+
+# Thread-safe in-memory store for OTP cooldowns, attempt counters, and hashed tokens
+otp_store = {}
+otp_lock = threading.Lock()
+
+def normalize_indian_phone(phone_input):
+    """Normalize and validate 10-digit Indian mobile number (e.g., 9876543210)."""
+    if not phone_input:
+        return None
+    raw = ''.join(c for c in str(phone_input) if c.isdigit())
+    if raw.startswith('91') and len(raw) == 12:
+        raw = raw[2:]
+    elif raw.startswith('0') and len(raw) == 11:
+        raw = raw[1:]
+    if len(raw) == 10 and raw[0] in '6789':
+        return raw
+    return None
+
 
 # Database paths (configurable via environment variables for persistent volume mounts)
 DEFAULT_DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'server', 'data')
@@ -966,55 +999,565 @@ def auth_me():
     return jsonify(safe_user)
 
 # ==========================================
-# ADDRESSES
+# GOOGLE OAUTH AUTHENTICATION (PHASE 3)
 # ==========================================
 
-@app.route('/api/addresses', methods=['GET', 'POST'])
-def handle_addresses():
-    user = get_current_user()
-    db = get_db()
-    user_id = user.get('id') if user else 'anonymous'
+@app.route('/api/auth/google/config', methods=['GET'])
+def get_google_auth_config():
+    """Return public Google OAuth configuration."""
+    return jsonify({
+        'enabled': bool(GOOGLE_CLIENT_ID),
+        'client_id': GOOGLE_CLIENT_ID
+    })
 
-    if request.method == 'GET':
-        addrs = [a for a in db.get('addresses', []) if a.get('user_id') == user_id]
-        return jsonify(addrs)
+@app.route('/api/auth/google/verify', methods=['POST'])
+def verify_google_token():
+    """
+    Verify Google Identity Services credential token using Google's official tokeninfo API.
+    Enforces aud, iss, email_verified, and safe account linking.
+    """
+    if not GOOGLE_CLIENT_ID:
+        return jsonify({
+            'error': 'Google Sign-In is not configured on the server. Please set GOOGLE_CLIENT_ID in .env'
+        }), 503
 
     body = request.get_json(force=True) or {}
+    credential = body.get('credential', '').strip()
+    if not credential:
+        return jsonify({'error': 'Missing Google credential token.'}), 400
+
+    try:
+        # Validate ID token with Google's official public tokeninfo endpoint
+        tokeninfo_url = f"https://oauth2.googleapis.com/tokeninfo?id_token={urllib.parse.quote(credential)}"
+        resp = requests.get(tokeninfo_url, timeout=5)
+        if resp.status_code != 200:
+            return jsonify({'error': 'Invalid or expired Google identity token.'}), 401
+
+        info = resp.json()
+        token_aud = info.get('aud')
+        token_iss = info.get('iss')
+        token_email = (info.get('email') or '').strip().lower()
+        email_verified = info.get('email_verified')
+        sub = info.get('sub')
+
+        if token_aud != GOOGLE_CLIENT_ID:
+            return jsonify({'error': 'Token audience mismatch. Untrusted Google Client ID.'}), 401
+
+        if token_iss not in ['accounts.google.com', 'https://accounts.google.com']:
+            return jsonify({'error': 'Token issuer mismatch. Untrusted token source.'}), 401
+
+        if str(email_verified).lower() != 'true':
+            return jsonify({'error': 'Google account email is not verified by Google.'}), 400
+
+        if not sub or not token_email:
+            return jsonify({'error': 'Incomplete profile data received from Google.'}), 400
+
+        db = get_db()
+        existing_user = None
+
+        # Look up by persistent Google Provider Identity (sub) or verified email
+        for u in db.get('users', []):
+            if u.get('google_id') == sub:
+                existing_user = u
+                break
+
+        if not existing_user:
+            for u in db.get('users', []):
+                if u.get('email', '').lower() == token_email:
+                    existing_user = u
+                    # Link Google ID safely to existing verified email
+                    existing_user['google_id'] = sub
+                    existing_user['google_linked'] = True
+                    save_db()
+                    break
+
+        if existing_user:
+            user = existing_user
+        else:
+            # Create fresh customer account with stable Google identity
+            user_id = f"usr-g-{int(time.time() * 1000)}"
+            user = {
+                'id': user_id,
+                'email': token_email,
+                'google_id': sub,
+                'full_name': info.get('name') or 'Google User',
+                'avatar': info.get('picture', ''),
+                'phone': '',
+                'role': 'customer',
+                'auth_provider': 'google',
+                'created_at': datetime.now(timezone.utc).isoformat()
+            }
+            db['users'].append(user)
+            save_db()
+
+        token = jwt.encode({'id': user['id'], 'email': user.get('email'), 'role': user['role']}, JWT_SECRET, algorithm='HS256')
+        safe_user = {k: v for k, v in user.items() if k != 'password_hash'}
+
+        return jsonify({
+            'message': 'Google Sign-In successful! SMARTIFY par aapka swagat hai.',
+            'token': token,
+            'user': safe_user
+        }), 200
+
+    except Exception as e:
+        print(f"Google auth verification error: {e}")
+        return jsonify({'error': 'Could not verify Google authentication. Please try again.'}), 500
+
+
+# ==========================================
+# PHONE NUMBER OTP AUTHENTICATION (PHASE 4)
+# ==========================================
+
+@app.route('/api/auth/otp/send', methods=['POST'])
+@app.route('/api/auth/otp/resend', methods=['POST'])
+def send_otp():
+    """
+    Generate and dispatch a cryptographically secure OTP to an Indian mobile number.
+    Enforces normalization, 60s cooldown, 15-minute rate-limiting, and salt-hashed storage.
+    """
+    body = request.get_json(force=True) or {}
+    raw_phone = body.get('phone', '')
+    phone = normalize_indian_phone(raw_phone)
+
+    if not phone:
+        return jsonify({'error': 'Please enter a valid 10-digit Indian mobile number.'}), 400
+
+    now = time.time()
+    with otp_lock:
+        rec = otp_store.get(phone)
+        if rec:
+            # 1. Enforce 60-second cooldown between resends
+            elapsed = now - rec.get('last_sent_at', 0)
+            if elapsed < 60:
+                remaining = int(60 - elapsed)
+                return jsonify({
+                    'error': f'Please wait {remaining} seconds before requesting a new OTP.',
+                    'cooldown_remaining': remaining
+                }), 429
+
+            # 2. Rate limiting: Max 4 requests in 15 minutes window
+            window_start = rec.get('window_start', now)
+            if now - window_start < 900:
+                if rec.get('request_count_15m', 0) >= 4:
+                    return jsonify({'error': 'Too many OTP requests. Please wait 15 minutes before trying again.'}), 429
+                rec['request_count_15m'] += 1
+            else:
+                rec['window_start'] = now
+                rec['request_count_15m'] = 1
+        else:
+            rec = {'request_count_15m': 1, 'window_start': now}
+
+        # Generate 6-digit secure numeric OTP
+        otp_digits = f"{secrets.randbelow(900000) + 100000}"
+        salt = secrets.token_hex(16)
+        otp_hash = hashlib.sha256((salt + otp_digits).encode('utf-8')).hexdigest()
+
+        otp_store[phone] = {
+            'otp_hash': otp_hash,
+            'salt': salt,
+            'expires_at': now + 300,  # 5 minutes expiry
+            'last_sent_at': now,
+            'attempts': 0,
+            'request_count_15m': rec['request_count_15m'],
+            'window_start': rec['window_start']
+        }
+
+    # Dispatch via configured Indian SMS Gateway
+    sms_sent = False
+    sms_error = None
+
+    if SMS_PROVIDER == 'fast2sms' and FAST2SMS_API_KEY:
+        try:
+            f2s_url = "https://www.fast2sms.com/dev/bulkV2"
+            f2s_payload = {
+                'authorization': FAST2SMS_API_KEY,
+                'variables_values': otp_digits,
+                'route': 'otp',
+                'numbers': phone
+            }
+            f2s_resp = requests.post(f2s_url, json=f2s_payload, timeout=5)
+            if f2s_resp.status_code == 200 and f2s_resp.json().get('return'):
+                sms_sent = True
+            else:
+                sms_error = f2s_resp.json().get('message', 'Fast2SMS dispatch failed')
+        except Exception as f2s_err:
+            sms_error = str(f2s_err)
+
+    elif SMS_PROVIDER == 'twilio' and TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN and TWILIO_PHONE_NUMBER:
+        try:
+            twilio_url = f"https://api.twilio.com/2010-04-01/Accounts/{TWILIO_ACCOUNT_SID}/Messages.json"
+            tw_resp = requests.post(
+                twilio_url,
+                data={
+                    'From': TWILIO_PHONE_NUMBER,
+                    'To': f'+91{phone}',
+                    'Body': f'Your SMARTIFY verification OTP is {otp_digits}. Valid for 5 minutes. Do not share.'
+                },
+                auth=(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN),
+                timeout=5
+            )
+            if tw_resp.status_code in [200, 201]:
+                sms_sent = True
+            else:
+                sms_error = tw_resp.json().get('message', 'Twilio dispatch failed')
+        except Exception as tw_err:
+            sms_error = str(tw_err)
+
+    # In strict production, fail if real SMS could not be dispatched
+    is_prod = (os.getenv('FLASK_ENV') == 'production' and SMS_PROVIDER not in ['dev', 'mock', 'demo'])
+    if is_prod and not sms_sent:
+        with otp_lock:
+            if phone in otp_store:
+                del otp_store[phone]
+        return jsonify({
+            'error': f'Failed to deliver OTP via SMS provider: {sms_error or "SMS Gateway unavailable"}. Please check credentials.'
+        }), 502
+
+    # In development/prototype mode
+    demo_otp = None
+    if not is_prod:
+        demo_otp = otp_digits
+
+    return jsonify({
+        'success': True,
+        'message': f'OTP sent successfully to +91 {phone[:2]}******{phone[-2:]}.',
+        'phone': f'+91{phone}',
+        'cooldown_seconds': 60,
+        'expires_in': 300,
+        'demo_mode': not is_prod,
+        'dev_otp': demo_otp
+    }), 200
+
+@app.route('/api/auth/otp/verify', methods=['POST'])
+def verify_otp():
+    """
+    Verify customer OTP with attempt limiting, expiry checks, and session issuance.
+    """
+    body = request.get_json(force=True) or {}
+    raw_phone = body.get('phone', '')
+    entered_otp = str(body.get('otp', '')).strip()
+    full_name = body.get('full_name', '').strip()
+
+    phone = normalize_indian_phone(raw_phone)
+    if not phone:
+        return jsonify({'error': 'Invalid phone number format.'}), 400
+
+    if not entered_otp or len(entered_otp) != 6 or not entered_otp.isdigit():
+        return jsonify({'error': 'Please enter a valid 6-digit OTP.'}), 400
+
+    now = time.time()
+    with otp_lock:
+        rec = otp_store.get(phone)
+        if not rec:
+            return jsonify({'error': 'No active OTP found for this number. Please request a new OTP.'}), 400
+
+        if now > rec.get('expires_at', 0):
+            del otp_store[phone]
+            return jsonify({'error': 'This OTP has expired. Please request a new OTP.'}), 400
+
+        if rec.get('attempts', 0) >= 5:
+            del otp_store[phone]
+            return jsonify({'error': 'Maximum verification attempts exceeded. Please request a fresh OTP.'}), 400
+
+        # Check cryptographic hash match with salt
+        entered_hash = hashlib.sha256((rec['salt'] + entered_otp).encode('utf-8')).hexdigest()
+        if entered_hash != rec['otp_hash']:
+            rec['attempts'] += 1
+            remaining = 5 - rec['attempts']
+            if remaining <= 0:
+                del otp_store[phone]
+                return jsonify({'error': 'Too many incorrect attempts. OTP invalidated.'}), 400
+            return jsonify({'error': f'Incorrect OTP. {remaining} attempt(s) remaining.'}), 400
+
+        # Verification successful: remove used OTP immediately
+        del otp_store[phone]
+
+    # Find or register customer account with verified phone
+    db = get_db()
+    user = None
+    for u in db.get('users', []):
+        if normalize_indian_phone(u.get('phone')) == phone:
+            user = u
+            break
+
+    if not user:
+        user_id = f"usr-p-{int(time.time() * 1000)}"
+        user = {
+            'id': user_id,
+            'phone': phone,
+            'email': f"{phone}@smartify.in",
+            'full_name': full_name or f"Smartify User (+91 {phone[-4:]})",
+            'role': 'customer',
+            'auth_provider': 'phone_otp',
+            'phone_verified': True,
+            'created_at': datetime.now(timezone.utc).isoformat()
+        }
+        db['users'].append(user)
+        save_db()
+    else:
+        user['phone_verified'] = True
+        save_db()
+
+    token = jwt.encode({'id': user['id'], 'email': user.get('email'), 'role': user['role']}, JWT_SECRET, algorithm='HS256')
+    safe_user = {k: v for k, v in user.items() if k != 'password_hash'}
+
+    return jsonify({
+        'message': 'Mobile verification successful! SMARTIFY par aapka swagat hai.',
+        'token': token,
+        'user': safe_user
+    }), 200
+
+
+# ==========================================
+# DELIVERY ADDRESS MANAGEMENT (PHASE 2)
+# ==========================================
+
+@app.route('/api/addresses', methods=['GET'])
+def get_addresses():
+    """Retrieve saved addresses for the authenticated customer only."""
+    user = get_current_user()
+    if not user:
+        return jsonify([])
+    db = get_db()
+    addrs = [a for a in db.get('addresses', []) if a.get('user_id') == user.get('id')]
+    return jsonify(addrs)
+
+@app.route('/api/addresses', methods=['POST'])
+def add_address():
+    """
+    Save a new delivery address with Indian PIN code, mobile, and field validation.
+    Associates address with authenticated customer.
+    """
+    user = get_current_user()
+    if not user:
+        return jsonify({'error': 'Please sign in to save your delivery address.'}), 401
+
+    body = request.get_json(force=True) or {}
+    full_name = body.get('full_name', '').strip()
+    phone = normalize_indian_phone(body.get('phone', ''))
+    house_flat = body.get('house_flat', '').strip()
+    street_area = body.get('street_area', '').strip()
+    locality = body.get('locality', '').strip()
+    city = body.get('city', '').strip()
+    state = body.get('state', '').strip()
+    pincode = str(body.get('pincode', '')).strip()
+    tag = body.get('tag', 'Home').strip()
+    delivery_instructions = body.get('delivery_instructions', '').strip()
+    is_default = bool(body.get('is_default', False))
+
+    if not full_name or len(full_name) < 2:
+        return jsonify({'error': 'Please enter a valid recipient full name.'}), 400
+
+    if not phone:
+        return jsonify({'error': 'Please enter a valid 10-digit Indian contact phone number.'}), 400
+
+    if not house_flat:
+        return jsonify({'error': 'Please specify flat, house, or building number.'}), 400
+
+    if not pincode or len(pincode) != 6 or not pincode.isdigit() or pincode[0] == '0':
+        return jsonify({'error': 'Please provide a valid 6-digit Indian postal PIN code.'}), 400
+
+    if tag not in ['Home', 'Work', 'Other']:
+        tag = 'Home'
+
+    db = get_db()
+    if 'addresses' not in db:
+        db['addresses'] = []
+
+    # If this address is set as default, reset previous default addresses for this customer
+    if is_default:
+        for a in db['addresses']:
+            if a.get('user_id') == user['id']:
+                a['is_default'] = False
+
     addr_id = f"addr-{int(time.time() * 1000)}"
     new_addr = {
         'id': addr_id,
-        'user_id': user_id,
-        'full_name': body.get('full_name', ''),
-        'phone': body.get('phone', ''),
-        'house_flat': body.get('house_flat', ''),
-        'street_area': body.get('street_area', ''),
-        'city': body.get('city', ''),
-        'state': body.get('state', ''),
-        'pincode': body.get('pincode', ''),
-        'is_default': body.get('is_default', False)
+        'user_id': user['id'],
+        'tag': tag,
+        'full_name': full_name,
+        'phone': phone,
+        'house_flat': house_flat,
+        'street_area': street_area,
+        'locality': locality,
+        'city': city,
+        'state': state,
+        'pincode': pincode,
+        'delivery_instructions': delivery_instructions,
+        'is_default': is_default,
+        'created_at': datetime.now(timezone.utc).isoformat(),
+        'updated_at': datetime.now(timezone.utc).isoformat()
     }
     db['addresses'].append(new_addr)
     save_db()
     return jsonify(new_addr), 201
 
+@app.route('/api/addresses/<addr_id>', methods=['PUT'])
+def update_address(addr_id):
+    """
+    Update an existing delivery address.
+    Strictly verifies customer ownership to prevent unauthorized tampering.
+    """
+    user = get_current_user()
+    if not user:
+        return jsonify({'error': 'Unauthorized.'}), 401
+
+    db = get_db()
+    target = None
+    for a in db.get('addresses', []):
+        if a.get('id') == addr_id:
+            target = a
+            break
+
+    if not target:
+        return jsonify({'error': 'Address not found.'}), 404
+
+    # Ownership enforcement
+    if target.get('user_id') != user.get('id') and user.get('role') != 'admin':
+        return jsonify({'error': 'Unauthorized. You cannot modify another customer\'s address.'}), 403
+
+    body = request.get_json(force=True) or {}
+    if 'full_name' in body:
+        name = body['full_name'].strip()
+        if len(name) < 2:
+            return jsonify({'error': 'Recipient name must be at least 2 characters.'}), 400
+        target['full_name'] = name
+
+    if 'phone' in body:
+        phone = normalize_indian_phone(body['phone'])
+        if not phone:
+            return jsonify({'error': 'Invalid 10-digit Indian phone number.'}), 400
+        target['phone'] = phone
+
+    if 'pincode' in body:
+        pin = str(body['pincode']).strip()
+        if len(pin) != 6 or not pin.isdigit() or pin[0] == '0':
+            return jsonify({'error': 'Invalid 6-digit Indian PIN code.'}), 400
+        target['pincode'] = pin
+
+    if 'house_flat' in body:
+        target['house_flat'] = body['house_flat'].strip()
+    if 'street_area' in body:
+        target['street_area'] = body['street_area'].strip()
+    if 'locality' in body:
+        target['locality'] = body['locality'].strip()
+    if 'city' in body:
+        target['city'] = body['city'].strip()
+    if 'state' in body:
+        target['state'] = body['state'].strip()
+    if 'tag' in body and body['tag'] in ['Home', 'Work', 'Other']:
+        target['tag'] = body['tag']
+    if 'delivery_instructions' in body:
+        target['delivery_instructions'] = body['delivery_instructions'].strip()
+
+    if body.get('is_default'):
+        for a in db.get('addresses', []):
+            if a.get('user_id') == user['id']:
+                a['is_default'] = False
+        target['is_default'] = True
+
+    target['updated_at'] = datetime.now(timezone.utc).isoformat()
+    save_db()
+    return jsonify(target), 200
+
 @app.route('/api/addresses/<addr_id>', methods=['DELETE'])
 def delete_address(addr_id):
+    """Delete an address after verifying customer ownership."""
+    user = get_current_user()
+    if not user:
+        return jsonify({'error': 'Unauthorized.'}), 401
+
     db = get_db()
+    target = None
+    for a in db.get('addresses', []):
+        if a.get('id') == addr_id:
+            target = a
+            break
+
+    if not target:
+        return jsonify({'error': 'Address not found.'}), 404
+
+    # Ownership check
+    if target.get('user_id') != user.get('id') and user.get('role') != 'admin':
+        return jsonify({'error': 'Unauthorized. You cannot delete another customer\'s address.'}), 403
+
     db['addresses'] = [a for a in db.get('addresses', []) if a.get('id') != addr_id]
     save_db()
-    return jsonify({'message': 'Address removed.'})
+    return jsonify({'message': 'Address removed successfully.'}), 200
+
+@app.route('/api/addresses/<addr_id>/default', methods=['POST'])
+def set_default_address(addr_id):
+    """Set an address as default for the authenticated customer."""
+    user = get_current_user()
+    if not user:
+        return jsonify({'error': 'Unauthorized.'}), 401
+
+    db = get_db()
+    target = None
+    for a in db.get('addresses', []):
+        if a.get('id') == addr_id:
+            target = a
+            break
+
+    if not target:
+        return jsonify({'error': 'Address not found.'}), 404
+
+    if target.get('user_id') != user.get('id') and user.get('role') != 'admin':
+        return jsonify({'error': 'Unauthorized to set this address as default.'}), 403
+
+    for a in db.get('addresses', []):
+        if a.get('user_id') == user['id']:
+            a['is_default'] = (a.get('id') == addr_id)
+
+    save_db()
+    return jsonify(target), 200
+
+@app.route('/api/addresses/reverse-geocode', methods=['GET'])
+def reverse_geocode_address():
+    """
+    Server-side reverse geocoding route using OpenStreetMap Nominatim.
+    Called only after customer explicitly grants browser location access.
+    """
+    try:
+        lat = float(request.args.get('lat', 0))
+        lon = float(request.args.get('lon', 0))
+        if not (-90 <= lat <= 90 and -180 <= lon <= 180):
+            return jsonify({'error': 'Invalid geographic coordinates.'}), 400
+
+        geo_url = f"https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat={lat}&lon={lon}"
+        headers = {'User-Agent': 'SMARTIFY-QuickCommerce-India/2.0'}
+        resp = requests.get(geo_url, headers=headers, timeout=4)
+        if resp.status_code == 200:
+            data = resp.json()
+            addr = data.get('address', {})
+            return jsonify({
+                'pincode': addr.get('postcode', ''),
+                'city': addr.get('city') or addr.get('town') or addr.get('city_district') or addr.get('state_district', ''),
+                'state': addr.get('state', ''),
+                'locality': addr.get('suburb') or addr.get('neighbourhood') or addr.get('residential', ''),
+                'street': addr.get('road', ''),
+                'display_name': data.get('display_name', '')
+            })
+        return jsonify({'error': 'Geocoding service unavailable.'}), 502
+    except Exception as e:
+        return jsonify({'error': f'Could not resolve coordinates: {e}'}), 500
+
 
 # ==========================================
-# ORDERS
+# ORDERS (PHASE 6 & PHASE 7)
 # ==========================================
 
 @app.route('/api/orders', methods=['GET'])
 def get_orders():
+    """Retrieve orders with authentication and customer ownership checks."""
     user = get_current_user()
+    if not user:
+        return jsonify([])
+
     db = get_db()
     orders = db.get('orders', [])
 
-    if user and user.get('role') != 'admin':
+    if user.get('role') != 'admin':
         orders = [o for o in orders if o.get('user_id') == user.get('id')]
 
     # Sort newest first
@@ -1023,9 +1566,17 @@ def get_orders():
 
 @app.route('/api/orders/<order_id>', methods=['GET'])
 def get_order_by_identifier(order_id):
+    """Retrieve order details with ownership verification."""
     order = get_order_by_id(order_id)
     if not order:
         return jsonify({'error': 'Order not found.'}), 404
+
+    user = get_current_user()
+    # Check ownership if order is assigned to a user account
+    if order.get('user_id'):
+        if not user or (user.get('role') != 'admin' and order.get('user_id') != user.get('id')):
+            return jsonify({'error': 'Unauthorized to view this order.'}), 403
+
     return jsonify(order)
 
 # ==========================================

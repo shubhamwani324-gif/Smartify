@@ -38,7 +38,7 @@ export default function OrdersPage({ onBackToShopping, onViewOrderDetails }) {
             Sign in to view your Orders
           </h2>
           <p style={{ fontSize: '0.85rem', color: 'var(--qc-muted)', marginBottom: '1.5rem' }}>
-            Log in to track your 10-minute deliveries, view receipts, and reorder past smart items.
+            Log in to track your express deliveries, view receipts, and reorder past smart items.
           </p>
           <button
             type="button"
@@ -82,7 +82,7 @@ export default function OrdersPage({ onBackToShopping, onViewOrderDetails }) {
             No Orders Yet
           </h3>
           <p style={{ fontSize: '0.85rem', color: 'var(--qc-muted)', marginBottom: '1.5rem' }}>
-            You haven't placed any SMARTIFY orders yet. Enjoy 10-minute delivery on your first smart device.
+            You haven't placed any SMARTIFY orders yet. Explore our top smart home essentials today.
           </p>
           <button
             type="button"

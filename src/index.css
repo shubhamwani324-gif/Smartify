@@ -1635,4 +1635,241 @@ button {
   }
 }
 
+/* ==========================================================================
+   SMARTIFY - Phase 1 Splash Opening Animation Styles
+   ========================================================================== */
+
+.smartify-splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #1f2937 0%, #111827 100%);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.smartify-splash-fadeout {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.smartify-splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  max-width: 480px;
+  width: 90%;
+  animation: splashPopIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes splashPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.smartify-splash-emblem-wrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smartify-splash-emblem-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(16, 185, 129, 0.15) 50%, transparent 70%);
+  border-radius: 50%;
+  animation: emblemPulse 2s infinite ease-in-out;
+}
+
+@keyframes emblemPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.smartify-splash-icon {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 8px 24px rgba(245, 158, 11, 0.35));
+}
+
+.smartify-splash-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.smartify-splash-brand {
+  font-size: 2.35rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.smartify-splash-badge {
+  background: #f59e0b;
+  color: #111827;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  letter-spacing: 0.06em;
+}
+
+.smartify-splash-taglines {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.smartify-taglines-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.smartify-splash-tagline-main {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f8cb46;
+  margin-bottom: 0.3rem;
+}
+
+.smartify-splash-tagline-sub {
+  font-size: 0.88rem;
+  color: #9ca3af;
+  font-family: var(--font-body);
+}
+
+.smartify-splash-progress-track {
+  width: 140px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.smartify-splash-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #f59e0b, #10b981);
+  transform: translateX(-100%);
+  animation: splashProgress 1.6s ease-in-out forwards;
+}
+
+@keyframes splashProgress {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(-20%); }
+  100% { transform: translateX(0%); }
+}
+
+.smartify-splash-skip-btn {
+  margin-top: 1.1rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #9ca3af;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.smartify-splash-skip-btn:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smartify-splash-overlay {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   SMARTIFY - Phase 2 Delivery Address Management Modal Styles
+   ========================================================================== */
+
+.qc-addr-card {
+  border: 1.5px solid var(--qc-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.qc-addr-card:hover {
+  border-color: var(--qc-green-border);
+  box-shadow: var(--qc-shadow-sm);
+}
+
+.qc-addr-card-selected {
+  border-color: var(--qc-green);
+  background: #f0fdf4;
+}
+
+.qc-addr-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.qc-addr-tag-home {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.qc-addr-tag-work {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.qc-addr-tag-other {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.qc-addr-default-badge {
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+}
+
+
 

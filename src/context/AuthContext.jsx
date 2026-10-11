@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
       }
       try {
         const data = await api.getMe();
-        setUser(data.user);
+        setUser(data.user || data);
       } catch (err) {
         console.warn('Session expired or invalid token.');
         logout();
@@ -28,6 +28,14 @@ export function AuthProvider({ children }) {
     }
     loadUser();
   }, [token]);
+
+  const loginWithToken = (tokenVal, userVal) => {
+    localStorage.setItem('smartify_token', tokenVal);
+    localStorage.setItem('gharva_token', tokenVal);
+    setToken(tokenVal);
+    setUser(userVal);
+    setIsAuthModalOpen(false);
+  };
 
   const login = async (email, password) => {
     const data = await api.login(email, password);
@@ -70,6 +78,7 @@ export function AuthProvider({ children }) {
         closeAuthModal: () => setIsAuthModalOpen(false),
         login,
         register,
+        loginWithToken,
         logout
       }}
     >
