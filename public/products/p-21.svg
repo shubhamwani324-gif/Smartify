@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <radialGradient id="outerBezel" cx="45%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </radialGradient>
+    <radialGradient id="innerChamber" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="85%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </radialGradient>
+    <radialGradient id="centerButton" cx="45%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </radialGradient>
+    <linearGradient id="ventSlot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Background -->
+  <rect width="800" height="800" fill="url(#bgGlow)"/>
+
+  <!-- Main Smoke Detector Body -->
+  <g filter="url(#softShadow)">
+    <!-- Base mounting ring -->
+    <circle cx="400" cy="400" r="280" fill="#e2e8f0"/>
+    <!-- Outer tapered body -->
+    <circle cx="400" cy="396" r="270" fill="url(#outerBezel)" stroke="#cbd5e1" stroke-width="2"/>
+    
+    <!-- Concentric acoustic/smoke vent grilles -->
+    <circle cx="400" cy="396" r="215" fill="none" stroke="#94a3b8" stroke-width="4" stroke-dasharray="14 10"/>
+    <circle cx="400" cy="396" r="195" fill="none" stroke="#64748b" stroke-width="5" stroke-dasharray="18 12"/>
+    <circle cx="400" cy="396" r="175" fill="none" stroke="#94a3b8" stroke-width="4" stroke-dasharray="12 8"/>
+    
+    <!-- Recessed sensor chamber -->
+    <circle cx="400" cy="396" r="150" fill="url(#innerChamber)" stroke="#cbd5e1" stroke-width="2"/>
+
+    <!-- Mesh vents pattern -->
+    <g fill="#475569" opacity="0.75">
+      <circle cx="525.0" cy="396.0" r="4.5"/>
+<circle cx="520.7" cy="428.4" r="4.5"/>
+<circle cx="508.3" cy="458.5" r="4.5"/>
+<circle cx="488.4" cy="484.4" r="4.5"/>
+<circle cx="462.5" cy="504.3" r="4.5"/>
+<circle cx="432.4" cy="516.7" r="4.5"/>
+<circle cx="400.0" cy="521.0" r="4.5"/>
+<circle cx="367.6" cy="516.7" r="4.5"/>
+<circle cx="337.5" cy="504.3" r="4.5"/>
+<circle cx="311.6" cy="484.4" r="4.5"/>
+<circle cx="291.7" cy="458.5" r="4.5"/>
+<circle cx="279.3" cy="428.4" r="4.5"/>
+<circle cx="275.0" cy="396.0" r="4.5"/>
+<circle cx="279.3" cy="363.6" r="4.5"/>
+<circle cx="291.7" cy="333.5" r="4.5"/>
+<circle cx="311.6" cy="307.6" r="4.5"/>
+<circle cx="337.5" cy="287.7" r="4.5"/>
+<circle cx="367.6" cy="275.3" r="4.5"/>
+<circle cx="400.0" cy="271.0" r="4.5"/>
+<circle cx="432.4" cy="275.3" r="4.5"/>
+<circle cx="462.5" cy="287.7" r="4.5"/>
+<circle cx="488.4" cy="307.6" r="4.5"/>
+<circle cx="508.3" cy="333.5" r="4.5"/>
+<circle cx="520.7" cy="363.6" r="4.5"/>
+    </g>
+
+    <!-- Center Test / Hush Button -->
+    <circle cx="400" cy="396" r="90" fill="url(#centerButton)" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="400" cy="396" r="88" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+
+    <!-- Brand Logo: QUBO -->
+    <text x="400" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="3">QUBO</text>
+    <text x="400" y="402" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle" letter-spacing="1.5">SMART SMOKE DETECTOR</text>
+    <text x="400" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#94a3b8" text-anchor="middle" letter-spacing="1">PRESS TO TEST • 85dB</text>
+
+    <!-- Status LED -->
+    <circle cx="400" cy="442" r="6" fill="#10b981"/>
+    <circle cx="400" cy="442" r="10" fill="#10b981" opacity="0.25"/>
+  </g>
+
+  <!-- Spec Tag -->
+  <rect x="280" y="695" width="240" height="32" rx="16" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="400" y="716" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#475569" text-anchor="middle">Photoelectric • Wi-Fi 2.4GHz</text>
+</svg>

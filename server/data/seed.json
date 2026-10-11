@@ -1,0 +1,1862 @@
+{
+  "users": [
+    {
+      "id": "usr-admin-01",
+      "email": "admin@gharva.in",
+      "password_hash": "$2a$10$w87.Yg1ZzJ1K2W8C0u2vhe8N2Zk7L8O4yL1c3L9m8K7u2Z1vhe8N2",
+      "full_name": "SMARTIFY Admin",
+      "phone": "9876543210",
+      "role": "admin",
+      "created_at": "2026-10-08T14:05:36.758Z"
+    },
+    {
+      "id": "usr-admin-02",
+      "email": "admin@smartify.in",
+      "password_hash": "$2a$10$w87.Yg1ZzJ1K2W8C0u2vhe8N2Zk7L8O4yL1c3L9m8K7u2Z1vhe8N2",
+      "full_name": "SMARTIFY Admin",
+      "phone": "9876543210",
+      "role": "admin",
+      "created_at": "2026-10-08T14:05:36.758Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-lighting",
+      "slug": "smart-lighting",
+      "name": "Smart Lighting",
+      "hindi_name": "स्मार्ट लाइट्स",
+      "icon": "💡",
+      "description": "Wi-Fi smart bulbs, RGB LED strips, and ambient lamps with app & voice control."
+    },
+    {
+      "id": "cat-plugs",
+      "slug": "smart-plugs",
+      "name": "Smart Plugs",
+      "hindi_name": "स्मार्ट प्लग्स",
+      "icon": "🔌",
+      "description": "Wi-Fi smart plugs with energy monitoring for geysers, ACs, and appliances."
+    },
+    {
+      "id": "cat-security",
+      "slug": "home-security",
+      "name": "Home Security",
+      "hindi_name": "होम सिक्योरिटी",
+      "icon": "📷",
+      "description": "Indoor & outdoor Wi-Fi cameras, video doorbells, and digital locks."
+    },
+    {
+      "id": "cat-locks",
+      "slug": "smart-locks",
+      "name": "Smart Locks",
+      "hindi_name": "स्मार्ट लॉक्स",
+      "icon": "🔐",
+      "description": "Fingerprint, PIN, and RFID smart digital door locks for Indian main doors."
+    },
+    {
+      "id": "cat-sensors",
+      "slug": "smart-sensors",
+      "name": "Smart Sensors",
+      "hindi_name": "स्मार्ट सेंसर्स",
+      "icon": "🌡️",
+      "description": "Motion, door-window, temperature, humidity, and water leak detectors."
+    },
+    {
+      "id": "cat-control",
+      "slug": "smart-control",
+      "name": "Smart Control",
+      "hindi_name": "स्मार्ट कंट्रोल",
+      "icon": "🎛️",
+      "description": "Universal IR blasters, smart switches, and IoT gateways to automate your home."
+    },
+    {
+      "id": "cat-entertainment",
+      "slug": "smart-entertainment",
+      "name": "Smart Audio & TV",
+      "hindi_name": "स्मार्ट ऑडियो",
+      "icon": "🔊",
+      "description": "Smart voice speakers, streaming sticks, and smart entertainment hubs."
+    },
+    {
+      "id": "cat-combos",
+      "slug": "smart-home-combos",
+      "name": "Smart Combos",
+      "hindi_name": "किफायती कॉम्बो",
+      "icon": "🏠",
+      "description": "Curated beginner, security, and energy saving kits at extra discounted bundle prices."
+    }
+  ],
+  "brands": [
+    {
+      "id": "b-philips",
+      "name": "Philips",
+      "logo_url": "https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-tapo",
+      "name": "TP-Link / Tapo",
+      "logo_url": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-wipro",
+      "name": "Wipro",
+      "logo_url": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-xiaomi",
+      "name": "Xiaomi",
+      "logo_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-qubo",
+      "name": "Qubo",
+      "logo_url": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-syska",
+      "name": "Syska",
+      "logo_url": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-portronics",
+      "name": "Portronics",
+      "logo_url": "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-godrej",
+      "name": "Godrej",
+      "logo_url": "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-yale",
+      "name": "Yale",
+      "logo_url": "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-amazon",
+      "name": "Amazon Echo",
+      "logo_url": "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-google",
+      "name": "Google Nest",
+      "logo_url": "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-oakter",
+      "name": "Oakter",
+      "logo_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=120&q=80"
+    },
+    {
+      "id": "b-gharva",
+      "name": "SMARTIFY Curated",
+      "logo_url": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=120&q=80"
+    }
+  ],
+  "products": [
+    {
+      "brand": "Philips",
+      "model": "Mk450",
+      "product_name": "Mk450  Lightinh",
+      "category_slug": "smart-sensors",
+      "mrp": 1200,
+      "selling_price": 299,
+      "stock": 25,
+      "description": "LED Ligthing",
+      "image_url": "https://images.unsplash.com/photo-1550524514-9b6928780e36?auto=format&fit=crop&w=800&q=80",
+      "sku": "GH-A3FDB1",
+      "compatibility": "Alexa, Google Assistant, Smart Life",
+      "price_source": "admin",
+      "id": "p-1791565513023",
+      "slug": "mk450-lightinh",
+      "rating": 5,
+      "review_count": 0,
+      "last_price_updated": "2026-10-09T17:05:13.024Z",
+      "is_active": false,
+      "created_at": "2026-10-09T17:05:13.024Z",
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-09T17:05:37.233Z"
+    },
+    {
+      "brand": "Syska",
+      "model": "SSK-3M",
+      "product_name": "Syska Smart Strip 3m",
+      "category_slug": "smart-lighting",
+      "mrp": 1999,
+      "selling_price": 999,
+      "stock": 30,
+      "sku": "SYS-CSV-01",
+      "description": "RGB 3m light strip",
+      "image_url": "https://images.unsplash.com/photo-1540932239986-30128078f3c5",
+      "price_source": "admin",
+      "id": "p-1791560450903",
+      "slug": "syska-smart-strip-3m",
+      "rating": 5,
+      "review_count": 0,
+      "last_price_updated": "2026-10-09T15:40:50.903Z",
+      "is_active": false,
+      "created_at": "2026-10-09T15:40:50.903Z",
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-09T16:45:48.359Z"
+    },
+    {
+      "brand": "Syska",
+      "model": "SSK-3M",
+      "product_name": "Syska Smart Strip 3m",
+      "category_slug": "smart-lighting",
+      "mrp": 1999,
+      "selling_price": 949,
+      "stock": 29,
+      "sku": "SYS-CSV-01",
+      "description": "RGB 3m light strip",
+      "image_url": "https://images.unsplash.com/photo-1540932239986-30128078f3c5",
+      "price_source": "admin",
+      "id": "p-1791555856322",
+      "slug": "syska-smart-strip-3m",
+      "rating": 5,
+      "review_count": 1,
+      "last_price_updated": "2026-10-09T15:40:50.893Z",
+      "is_active": false,
+      "created_at": "2026-10-09T14:24:16.322Z",
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-09T16:45:50.609Z"
+    },
+    {
+      "brand": "Syska",
+      "model": "SSK-3M",
+      "product_name": "Syska Smart Strip 3m",
+      "category_slug": "smart-lighting",
+      "mrp": 1999,
+      "selling_price": 949,
+      "stock": 29,
+      "sku": "SYS-CSV-01",
+      "description": "RGB 3m light strip",
+      "image_url": "https://images.unsplash.com/photo-1540932239986-30128078f3c5",
+      "price_source": "admin",
+      "id": "p-1791551098419",
+      "slug": "syska-smart-strip-3m",
+      "rating": 5,
+      "review_count": 1,
+      "last_price_updated": "2026-10-09T14:24:16.313Z",
+      "is_active": false,
+      "created_at": "2026-10-09T13:04:58.419Z",
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-09T16:45:52.002Z"
+    },
+    {
+      "brand": "Syska",
+      "model": "SSK-3M",
+      "product_name": "Syska Smart Strip 3m",
+      "category_slug": "smart-lighting",
+      "mrp": 1999,
+      "selling_price": 949,
+      "stock": 29,
+      "sku": "SYS-CSV-01",
+      "description": "RGB 3m light strip",
+      "image_url": "https://images.unsplash.com/photo-1540932239986-30128078f3c5",
+      "price_source": "admin",
+      "id": "p-1791550319855",
+      "slug": "syska-smart-strip-3m",
+      "rating": 5,
+      "review_count": 1,
+      "last_price_updated": "2026-10-09T13:04:58.411Z",
+      "is_active": false,
+      "created_at": "2026-10-09T12:51:59.855Z",
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-09T16:45:54.747Z"
+    },
+    {
+      "brand": "Syska",
+      "model": "SSK-3M",
+      "product_name": "Syska Smart Strip 3m",
+      "category_slug": "smart-lighting",
+      "mrp": 1999,
+      "selling_price": 949,
+      "stock": 30,
+      "sku": "SYS-CSV-01",
+      "description": "RGB 3m light strip",
+      "image_url": "https://images.unsplash.com/photo-1540932239986-30128078f3c5",
+      "price_source": "admin",
+      "id": "p-1791547940253",
+      "slug": "syska-smart-strip-3m",
+      "rating": 5,
+      "review_count": 0,
+      "last_price_updated": "2026-10-09T12:51:59.846Z",
+      "is_active": false,
+      "created_at": "2026-10-09T12:12:20.253Z",
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-09T16:45:57.209Z"
+    },
+    {
+      "brand": "Syska",
+      "model": "SSK-3M",
+      "product_name": "Syska Smart Strip 3m",
+      "category_slug": "smart-lighting",
+      "mrp": 1999,
+      "selling_price": 949,
+      "stock": 11,
+      "sku": "SYS-CSV-01",
+      "description": "RGB 3m light strip",
+      "image_url": "https://images.unsplash.com/photo-1540932239986-30128078f3c5",
+      "price_source": "admin",
+      "id": "p-1791469923856",
+      "slug": "syska-smart-strip-3m",
+      "rating": 5,
+      "review_count": 1,
+      "last_price_updated": "2026-10-09T12:12:20.244Z",
+      "is_active": true,
+      "created_at": "2026-10-08T14:32:03.856Z",
+      "discount_percentage": 50,
+      "discount_amount": 1000,
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-09T12:12:20.244Z"
+    },
+    {
+      "id": "p-01",
+      "slug": "philips-wiz-smart-wifi-9w-led-bulb",
+      "brand": "Philips",
+      "model": "Wiz Tunable & Color 9W (B22)",
+      "product_name": "Philips Wiz Smart Wi-Fi 9W LED Bulb (B22, 16 Million Colors)",
+      "category_slug": "smart-lighting",
+      "mrp": 999,
+      "selling_price": 599,
+      "stock": 32,
+      "sku": "PHI-WIZ-9W-B22",
+      "rating": 5,
+      "review_count": 2,
+      "description": "Control your lighting from anywhere using the WiZ app or voice commands with Alexa & Google Assistant. Enjoy 16 million colors and preset dynamic modes like Candlelight, Fireplace, and Party.",
+      "features": [
+        "16 Million RGB Colors + Tunable Warm to Cool White (2700K - 6500K)",
+        "Standard Indian B22 Base - No adapter needed",
+        "Connects directly to 2.4 GHz Wi-Fi - No bridge required",
+        "Dynamic light modes and circadian rhythm scheduling",
+        "Energy consumption monitoring in WiZ app"
+      ],
+      "specifications": {
+        "Wattage": "9 Watts (Equivalent to 60W Incandescent)",
+        "Luminous Flux": "825 Lumens",
+        "Base Type": "B22 (Indian Standard Bayonet)",
+        "Wireless Protocol": "Wi-Fi 2.4GHz + Bluetooth",
+        "Operating Voltage": "220V - 240V AC, 50Hz",
+        "Warranty": "2 Years Official Brand Warranty"
+      },
+      "compatibility": "Amazon Alexa, Google Assistant, Siri Shortcuts, WiZ App",
+      "whats_in_the_box": [
+        "1 x Philips WiZ 9W Smart LED Bulb",
+        "User Manual & Warranty Card"
+      ],
+      "image_url": "/products/p-01.jpg",
+      "gallery_images": [
+        "/products/p-01.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T14:32:03.846Z",
+      "is_active": true,
+      "is_combo": false,
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-08T14:32:03.846Z",
+      "discount_percentage": 40,
+      "discount_amount": 400
+    },
+    {
+      "id": "p-02",
+      "slug": "wipro-garnet-9w-smart-led-bulb",
+      "brand": "Wipro",
+      "model": "Garnet 9W B22 Smart Bulb",
+      "product_name": "Wipro Garnet 9W Smart LED Bulb with Music Sync",
+      "category_slug": "smart-lighting",
+      "mrp": 890,
+      "selling_price": 499,
+      "stock": 56,
+      "sku": "WIP-GAR-9W-RGB",
+      "rating": 4.4,
+      "review_count": 98,
+      "description": "Smart lighting on a budget. Sync your lights to music beats for home parties, wake up gently with scheduled sunrise timers, and control with Wipro Next Smart Home App.",
+      "features": [
+        "Music Sync Mode flashes colors with rhythm",
+        "16 Million Colors with dimmable brightness from 1% to 100%",
+        "Works with Alexa and Google Assistant",
+        "Group multiple bulbs to control an entire room with one tap",
+        "Scheduled timers for automatic on/off"
+      ],
+      "specifications": {
+        "Wattage": "9 Watts",
+        "Luminous Flux": "800 Lumens",
+        "Base Type": "B22",
+        "Wireless Protocol": "Wi-Fi 2.4GHz",
+        "Voltage": "230V AC",
+        "Warranty": "1 Year Replacement Warranty"
+      },
+      "compatibility": "Amazon Alexa, Google Assistant, Wipro Next Smart Home App",
+      "whats_in_the_box": [
+        "1 x Wipro Garnet 9W Bulb",
+        "Quick Installation Guide"
+      ],
+      "image_url": "/products/p-02.jpg",
+      "gallery_images": [
+        "/products/p-02.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-06T12:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 44,
+      "discount_amount": 391
+    },
+    {
+      "id": "p-03",
+      "slug": "tapo-l530e-smart-wifi-bulb",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo L530E (B22)",
+      "product_name": "Tapo L530E Smart Wi-Fi Multicolor LED Bulb (806 Lumens)",
+      "category_slug": "smart-lighting",
+      "mrp": 1299,
+      "selling_price": 749,
+      "stock": 35,
+      "sku": "TAP-L530E-B22",
+      "rating": 4.7,
+      "review_count": 210,
+      "description": "High quality TP-Link Tapo smart bulb with ultra-fast responsiveness, gentle sunrise wake-up, away mode for security, and granular energy tracking in the Tapo App.",
+      "features": [
+        "Multicolor + Tunable White (2500K-6500K)",
+        "Energy Monitoring: Track real-time power consumption",
+        "Away Mode: Automatically turns lights on/off at random times to deter intruders",
+        "Sunrise & Sunset Mode automatically adjusts with actual sun times",
+        "No hub needed, connects to Wi-Fi"
+      ],
+      "specifications": {
+        "Wattage": "8.7 Watts",
+        "Brightness": "806 Lumens",
+        "Base Type": "B22",
+        "Lifespan": "15,000 Hours",
+        "Warranty": "1 Year TP-Link India Warranty"
+      },
+      "compatibility": "Amazon Alexa, Google Assistant, Tapo App",
+      "whats_in_the_box": [
+        "1 x Tapo L530E Bulb",
+        "Quick Start Guide"
+      ],
+      "image_url": "/products/p-03.jpg",
+      "gallery_images": [
+        "/products/p-03.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T09:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 42,
+      "discount_amount": 550
+    },
+    {
+      "id": "p-04",
+      "slug": "syska-smart-led-12w-rgbw-bulb",
+      "brand": "Syska",
+      "model": "SSK-MW-12W",
+      "product_name": "Syska Smart LED 12W High-Brightness RGB+W Bulb",
+      "category_slug": "smart-lighting",
+      "mrp": 1199,
+      "selling_price": 599,
+      "stock": 28,
+      "sku": "SYS-12W-RGBW",
+      "rating": 4.3,
+      "review_count": 67,
+      "description": "Higher brightness 12-watt bulb designed for larger Indian living rooms. Delivers rich colors and crisp 6500K cool day light for reading and work.",
+      "features": [
+        "12W High Output - 1050 Lumens for large halls and rooms",
+        "Warm White, Cool White + 16 Million Colors",
+        "Compatible with Syska Smart Life App",
+        "Surge protection up to 2.5kV suited for Indian voltage spikes"
+      ],
+      "specifications": {
+        "Wattage": "12 Watts",
+        "Base Type": "B22",
+        "Luminous Flux": "1050 Lumens",
+        "Voltage": "220-240V, 50Hz",
+        "Warranty": "2 Years Brand Warranty"
+      },
+      "compatibility": "Alexa, Google Home, Syska Smart Home",
+      "whats_in_the_box": [
+        "1 x Syska 12W Smart Bulb",
+        "User Manual"
+      ],
+      "image_url": "/products/p-04.jpg",
+      "gallery_images": [
+        "/products/p-04.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-05T15:30:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 50,
+      "discount_amount": 600
+    },
+    {
+      "id": "p-05",
+      "slug": "tapo-l900-5-smart-light-strip-5m",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo L900-5 (5 Meters)",
+      "product_name": "Tapo L900-5 Smart Wi-Fi LED Light Strip (5 Meters)",
+      "category_slug": "smart-lighting",
+      "mrp": 3499,
+      "selling_price": 1999,
+      "stock": 19,
+      "sku": "TAP-L900-5M",
+      "rating": 4.8,
+      "review_count": 153,
+      "description": "Elevate your TV backlighting, gaming setup, or false ceiling with 5 meters of vibrant cuttable LED strip lights with sync-to-sound and flexible 3M adhesive backing.",
+      "features": [
+        "5-meter continuous strip with 150 high-grade RGB LEDs",
+        "Cuttable design along designated markings",
+        "Music Sync: Lights bounce to the beat of movies and games",
+        "Durable PU coating protects against dust and moisture"
+      ],
+      "specifications": {
+        "Length": "5 Meters",
+        "Wattage": "13.5 Watts Max",
+        "Power Adapter": "12V / 1.0A DC (Included)",
+        "Wireless Protocol": "Wi-Fi 2.4GHz",
+        "Warranty": "1 Year TP-Link India Warranty"
+      },
+      "compatibility": "Amazon Alexa, Google Assistant, Tapo App",
+      "whats_in_the_box": [
+        "1 x 5m LED Light Strip",
+        "1 x Power Adapter",
+        "1 x Controller Unit",
+        "User Guide"
+      ],
+      "image_url": "/products/p-05.jpg",
+      "gallery_images": [
+        "/products/p-05.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-06T11:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 43,
+      "discount_amount": 1500
+    },
+    {
+      "id": "p-06",
+      "slug": "xiaomi-smart-led-desk-lamp-1s",
+      "brand": "Xiaomi",
+      "model": "Mi Desk Lamp 1S",
+      "product_name": "Xiaomi Smart LED Desk Lamp 1S (Ra90 Color Rendering)",
+      "category_slug": "smart-lighting",
+      "mrp": 2999,
+      "selling_price": 2199,
+      "stock": 14,
+      "sku": "XIA-DESK-1S",
+      "rating": 4.7,
+      "review_count": 88,
+      "description": "Medical-grade eye protection desk lamp with optical lens texture, flicker-free dimming, 4 dedicated reading & focus modes, and Apple HomeKit support.",
+      "features": [
+        "Ra90 High Color Rendering Index for natural, true-to-life colors",
+        "4 Preset Modes: Focus, Reading, Computer, and Child Mode",
+        "Supports Apple HomeKit, Siri, Alexa, and Google Assistant",
+        "Minimalist folding metal arm with precise knob control"
+      ],
+      "specifications": {
+        "Wattage": "9 Watts",
+        "Color Temperature": "2600K - 5000K Stepless",
+        "Luminous Flux": "520 Lumens",
+        "Smart Ecosystem": "Mi Home / Apple HomeKit",
+        "Warranty": "1 Year Xiaomi India Warranty"
+      },
+      "compatibility": "Apple HomeKit, Siri, Google Assistant, Alexa, Mi Home App",
+      "whats_in_the_box": [
+        "1 x Mi Smart Desk Lamp 1S",
+        "Power Adapter",
+        "Instruction Manual"
+      ],
+      "image_url": "/products/p-06.jpg",
+      "gallery_images": [
+        "/products/p-06.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T14:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 27,
+      "discount_amount": 800
+    },
+    {
+      "id": "p-07",
+      "slug": "tapo-p110-mini-smart-wifi-plug-16a",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo P110 (16A Heavy Duty)",
+      "product_name": "Tapo P110 Mini Smart Wi-Fi Plug with Energy Monitoring (16A)",
+      "category_slug": "smart-plugs",
+      "mrp": 1999,
+      "selling_price": 1099,
+      "stock": 40,
+      "sku": "TAP-P110-16A",
+      "rating": 4.8,
+      "review_count": 312,
+      "description": "The gold standard heavy-duty 16A smart plug in India. Ideal for water heaters (geysers), air conditioners (up to 1.5 Ton), microwaves, and EV chargers. Track exact electricity units (kWh) consumed.",
+      "features": [
+        "16A Heavy Duty Rating (Up to 3680W Load)",
+        "Real-time & Historical Power Consumption Tracker with bill estimation",
+        "Auto-off Timer: Automatically shut off geyser after 20 minutes",
+        "Overheat & Flame Retardant UL94-V0 PC material",
+        "Compact Indian 3-Pin Big Plug design"
+      ],
+      "specifications": {
+        "Maximum Load": "16 Amps, 3680 Watts",
+        "Socket Type": "Type M (Indian Large 3-Pin)",
+        "Voltage": "220-240V AC, 50/60Hz",
+        "Energy Metering": "Yes (Voltage, Current, Wattage, kWh)",
+        "Warranty": "1 Year Replacement Warranty"
+      },
+      "compatibility": "Amazon Alexa, Google Assistant, Tapo App",
+      "whats_in_the_box": [
+        "1 x Tapo P110 16A Plug",
+        "Quick Installation Guide"
+      ],
+      "image_url": "/products/p-07.jpg",
+      "gallery_images": [
+        "/products/p-07.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T08:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 45,
+      "discount_amount": 900
+    },
+    {
+      "id": "p-08",
+      "slug": "wipro-16a-smart-plug-energy-monitoring",
+      "brand": "Wipro",
+      "model": "Wipro Smart Plug 16A",
+      "product_name": "Wipro 16A Smart Plug with Energy Monitoring (Heavy Appliances)",
+      "category_slug": "smart-plugs",
+      "mrp": 2290,
+      "selling_price": 999,
+      "stock": 52,
+      "sku": "WIP-PLUG-16A",
+      "rating": 4.5,
+      "review_count": 189,
+      "description": "Turn your conventional geyser or AC into a smart appliance. Schedule your water heater to turn on at 6:30 AM and shut down automatically, cutting your electricity bill.",
+      "features": [
+        "Supports appliances up to 16 Amps (Geyser, AC, Washing Machine)",
+        "Energy telemetry in Wipro Next App",
+        "Voice control via Alexa and Google Home",
+        "Surge and overload protection"
+      ],
+      "specifications": {
+        "Current Rating": "16A",
+        "Max Power": "3500 Watts",
+        "Input Voltage": "240V AC, 50Hz",
+        "Warranty": "1 Year Wipro Warranty"
+      },
+      "compatibility": "Amazon Alexa, Google Assistant, Wipro Next App",
+      "whats_in_the_box": [
+        "1 x Wipro 16A Smart Plug",
+        "User Manual"
+      ],
+      "image_url": "/products/p-08.jpg",
+      "gallery_images": [
+        "/products/p-08.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-06T16:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 56,
+      "discount_amount": 1291
+    },
+    {
+      "id": "p-09",
+      "slug": "tapo-p100-mini-smart-wifi-plug-10a",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo P100 (10A)",
+      "product_name": "Tapo P100 Mini Smart Wi-Fi Plug (10A Compact)",
+      "category_slug": "smart-plugs",
+      "mrp": 1499,
+      "selling_price": 799,
+      "stock": 38,
+      "sku": "TAP-P100-10A",
+      "rating": 4.7,
+      "review_count": 240,
+      "description": "Super compact 10A smart plug that fits standard Indian switchboards without blocking adjacent sockets. Perfect for mosquito repellents, table lamps, phone chargers, and TVs.",
+      "features": [
+        "10A rating for standard household devices (Up to 2300W)",
+        "Ultra-compact form factor leaves neighbor socket free",
+        "Countdown timer to prevent battery overcharging",
+        "Away Mode mimics home occupancy"
+      ],
+      "specifications": {
+        "Max Load": "10 Amps, 2300 Watts",
+        "Socket Type": "Type D (Indian Standard 3-Pin)",
+        "Voltage": "220-240V AC",
+        "Warranty": "1 Year TP-Link India Warranty"
+      },
+      "compatibility": "Alexa, Google Assistant, Tapo App",
+      "whats_in_the_box": [
+        "1 x Tapo P100 10A Plug",
+        "User Manual"
+      ],
+      "image_url": "/products/p-09.jpg",
+      "gallery_images": [
+        "/products/p-09.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T10:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 47,
+      "discount_amount": 700
+    },
+    {
+      "id": "p-10",
+      "slug": "portronics-konnect-smart-plug-10a",
+      "brand": "Portronics",
+      "model": "Konnect Plus 10A",
+      "product_name": "Portronics Konnect Smart Plug 10A (Budget Friendly)",
+      "category_slug": "smart-plugs",
+      "mrp": 1299,
+      "selling_price": 499,
+      "stock": 75,
+      "sku": "POR-KON-10A",
+      "rating": 4.3,
+      "review_count": 114,
+      "description": "SMARTIFY's top value pick under ₹500! Automate your night lamp, coffee maker, or aquarium lights effortlessly without spending a fortune.",
+      "features": [
+        "True budget champion under ₹500",
+        "10 Amp rating handles up to 1000W load safely",
+        "Flame-retardant material casing",
+        "Easy pairing via Portronics Smart App"
+      ],
+      "specifications": {
+        "Rating": "10 Amps",
+        "Max Power": "1000 Watts",
+        "Pin Type": "3-Pin Indian Standard",
+        "Warranty": "6 Months Portronics Warranty"
+      },
+      "compatibility": "Alexa, Google Assistant, Smart Life",
+      "whats_in_the_box": [
+        "1 x Portronics 10A Smart Plug",
+        "User Card"
+      ],
+      "image_url": "/products/p-10.jpg",
+      "gallery_images": [
+        "/products/p-10.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T09:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 62,
+      "discount_amount": 800
+    },
+    {
+      "id": "p-11",
+      "slug": "qubo-smart-plug-16a-surge-protection",
+      "brand": "Qubo",
+      "model": "Qubo Smart Plug 16A",
+      "product_name": "Qubo Smart Plug 16A with Indian Surge Protection",
+      "category_slug": "smart-plugs",
+      "mrp": 2190,
+      "selling_price": 1149,
+      "stock": 26,
+      "sku": "QUB-PLUG-16A",
+      "rating": 4.6,
+      "review_count": 84,
+      "description": "Designed specifically by Hero Electronix for Indian power conditions with built-in surge suppressor to safeguard expensive inverters, refrigerators, and water heaters.",
+      "features": [
+        "Special Indian Voltage Surge Suppressor (Up to 4kV)",
+        "16A continuous duty for heavy compressors",
+        "Power consumption graphs and unit-wise cost calculator",
+        "Child lock safety shutter on pin slots"
+      ],
+      "specifications": {
+        "Capacity": "16 Amps (Up to 3500 Watts)",
+        "Surge Protection": "Integrated Metal Oxide Varistor (MOV)",
+        "App": "Qubo Smart App (Hosted on secure Indian AWS servers)",
+        "Warranty": "1 Year Qubo India Warranty"
+      },
+      "compatibility": "Alexa, Google Assistant, Qubo App",
+      "whats_in_the_box": [
+        "1 x Qubo 16A Plug",
+        "Warranty Documentation"
+      ],
+      "image_url": "/products/p-11.jpg",
+      "gallery_images": [
+        "/products/p-11.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T15:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 48,
+      "discount_amount": 1041
+    },
+    {
+      "id": "p-12",
+      "slug": "tapo-c200-pan-tilt-security-camera",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo C200 (1080p)",
+      "product_name": "Tapo C200 Pan/Tilt Home Security Wi-Fi Camera (360° View)",
+      "category_slug": "home-security",
+      "mrp": 3299,
+      "selling_price": 1799,
+      "stock": 32,
+      "sku": "TAP-C200-1080P",
+      "rating": 4.7,
+      "review_count": 512,
+      "description": "India's bestselling indoor smart security camera. Covers every angle with 360° horizontal and 114° vertical pan/tilt range. Features crystal clear night vision, two-way talk, and privacy mode.",
+      "features": [
+        "1080p Full HD Resolution with 30ft infrared night vision",
+        "360° Horizontal Pan & 114° Vertical Tilt",
+        "Motion Tracking & Instant Smartphone Push Notifications",
+        "Two-Way Audio with built-in microphone & speaker",
+        "MicroSD card support up to 512GB (Local recording without subscription)"
+      ],
+      "specifications": {
+        "Resolution": "1080p FHD (1920 x 1080) at 15fps",
+        "Field of View": "360° Horizontal, 114° Vertical",
+        "Storage": "MicroSD slot (Up to 512GB) / Tapo Care Cloud",
+        "Night Vision": "850 nm IR LED up to 30 ft",
+        "Power": "9V DC Adapter (Included)",
+        "Warranty": "2 Years TP-Link India Warranty"
+      },
+      "compatibility": "Amazon Alexa (Echo Show), Google Assistant, Tapo App",
+      "whats_in_the_box": [
+        "1 x Tapo C200 Camera",
+        "1 x Power Adapter (3m Cable)",
+        "Mounting Screws & Template",
+        "Base Plate",
+        "Quick Guide"
+      ],
+      "image_url": "/products/p-12.jpg",
+      "gallery_images": [
+        "/products/p-12.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T10:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 45,
+      "discount_amount": 1500
+    },
+    {
+      "id": "p-13",
+      "slug": "qubo-smart-360-cam-1080p-ai",
+      "brand": "Qubo",
+      "model": "Qubo Smart 360 Cam",
+      "product_name": "Qubo Smart 360° Cam 1080p AI Camera (Made in India)",
+      "category_slug": "home-security",
+      "mrp": 3490,
+      "selling_price": 1899,
+      "stock": 24,
+      "sku": "QUB-360-CAM",
+      "rating": 4.6,
+      "review_count": 278,
+      "description": "Engineered in India by Hero Electronix with advanced AI person detection and unique baby cry alerts. Servers based securely inside India for complete data privacy.",
+      "features": [
+        "AI Person Detection: Eliminates false alerts from pets or curtains",
+        "Baby Cry Alert: Instant notification if your baby is crying",
+        "360° Pan-Tilt coverage with smooth motorized movement",
+        "Data stored locally in India for maximum privacy",
+        "Support for up to 1TB MicroSD Card"
+      ],
+      "specifications": {
+        "Resolution": "1080p Full HD",
+        "AI Features": "Person Detection, Baby Cry, Motion Tracking",
+        "Night Vision": "Clear Infrared up to 10m",
+        "Storage": "Up to 1TB MicroSD / Cloud Storage",
+        "Warranty": "1 Year Qubo Doorstep Warranty"
+      },
+      "compatibility": "Alexa, Google Assistant, Qubo App",
+      "whats_in_the_box": [
+        "1 x Qubo 360 Cam",
+        "Power Adapter & Cable",
+        "Wall Mount Bracket",
+        "User Manual"
+      ],
+      "image_url": "/products/p-13.jpg",
+      "gallery_images": [
+        "/products/p-13.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-06T14:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 46,
+      "discount_amount": 1591
+    },
+    {
+      "id": "p-14",
+      "slug": "tapo-c310-outdoor-security-camera",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo C310 Outdoor",
+      "product_name": "Tapo C310 Outdoor Security Wi-Fi Camera (IP66 Weatherproof, 3MP)",
+      "category_slug": "home-security",
+      "mrp": 4999,
+      "selling_price": 2799,
+      "stock": 18,
+      "sku": "TAP-C310-3MP",
+      "rating": 4.8,
+      "review_count": 186,
+      "description": "Rugged outdoor security camera engineered to withstand Indian monsoons, summer heat, and dust storms. 3-Megapixel ultra-clear resolution and loud intruder siren alarm.",
+      "features": [
+        "IP66 Weatherproof: Performs reliably in torrential rain and heavy dust",
+        "3MP Ultra-HD Definition captures sharp license plates and faces",
+        "Sound & Light Alarm triggers flashing strobe and loud siren to scare intruders",
+        "Wired Ethernet or Wireless Wi-Fi dual connectivity",
+        "Two-way audio for talking to delivery personnel at the gate"
+      ],
+      "specifications": {
+        "Resolution": "3MP (2304 x 1296)",
+        "Weather Rating": "IP66 Certified",
+        "Night Vision Range": "Up to 98 ft (30 meters)",
+        "Connectivity": "Wi-Fi 2.4GHz OR RJ45 Ethernet Port",
+        "Warranty": "2 Years TP-Link India Warranty"
+      },
+      "compatibility": "Amazon Alexa, Google Home, Tapo App",
+      "whats_in_the_box": [
+        "1 x Tapo C310 Camera",
+        "Power Adapter",
+        "Waterproof Cable Attachments",
+        "Wall Mounting Kit",
+        "Quick Guide"
+      ],
+      "image_url": "/products/p-14.png",
+      "gallery_images": [
+        "/products/p-14.png"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T12:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 44,
+      "discount_amount": 2200
+    },
+    {
+      "id": "p-15",
+      "slug": "qubo-smart-wifi-video-doorbell",
+      "brand": "Qubo",
+      "model": "Qubo Smart Doorbell Pro",
+      "product_name": "Qubo Smart Wi-Fi Video Doorbell with Wireless Chime (1080p)",
+      "category_slug": "home-security",
+      "mrp": 9990,
+      "selling_price": 4990,
+      "stock": 12,
+      "sku": "QUB-VDB-1080P",
+      "rating": 4.5,
+      "review_count": 73,
+      "description": "Never miss a visitor or courier delivery. Rings your phone with an instant HD video call wherever you are. Includes wireless plug-in indoor chime and pre-recorded quick responses.",
+      "features": [
+        "Instant Video Call on Phone when someone presses the doorbell",
+        "1080p FHD Camera with 140° Wide Angle Lens & Night Vision",
+        "Wireless plug-in chime with 36 pleasant melodies",
+        "Intruder Alarm: Alerts you if someone loiters near your main door for >15 seconds",
+        "Pre-recorded response audio: 'Please leave the parcel at the door'"
+      ],
+      "specifications": {
+        "Video Quality": "1080p Full HD, 140° Field of View",
+        "Power Source": "Hardwired to existing doorbell wiring / 12-24V AC",
+        "Chime": "Wireless indoor plug-in chime included",
+        "Warranty": "1 Year Qubo India Warranty"
+      },
+      "compatibility": "Alexa (Echo Show), Google Assistant, Qubo App",
+      "whats_in_the_box": [
+        "1 x Video Doorbell Unit",
+        "1 x Indoor Wireless Chime",
+        "Mounting Bracket & Angled Wedge",
+        "Wiring Kit",
+        "Manual"
+      ],
+      "image_url": "/products/p-15.png",
+      "gallery_images": [
+        "/products/p-15.png"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-05T18:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 50,
+      "discount_amount": 5000
+    },
+    {
+      "id": "p-16",
+      "slug": "godrej-advantis-smart-rim-lock",
+      "brand": "Godrej",
+      "model": "Advantis Rim Smart Lock",
+      "product_name": "Godrej Advantis Smart Electronic Rim Door Lock (RFID + PIN)",
+      "category_slug": "smart-locks",
+      "mrp": 11490,
+      "selling_price": 7999,
+      "stock": 15,
+      "sku": "GOD-ADV-RIM",
+      "rating": 4.7,
+      "review_count": 94,
+      "description": "Trusted security from Godrej. Upgrade wooden or steel main doors with electronic convenience. Access your home using RFID key cards, secret PIN passcode, or traditional emergency mechanical key.",
+      "features": [
+        "Access Modes: 4-12 Digit PIN Code, RFID Smart Card, Mechanical Key",
+        "Auto-locking feature secures door immediately after closing",
+        "Privacy Lock Mode prevents exterior entry from outside",
+        "Fire Alarm Sensor: Automatically unlocks if temperature exceeds threshold",
+        "Low battery voice indicator + 9V emergency battery jump terminals"
+      ],
+      "specifications": {
+        "Door Thickness Compatibility": "30mm to 50mm Wooden / Metal Doors",
+        "Lock Type": "Surface Mounted Rim Lock",
+        "Battery Life": "Up to 12 Months (4 x AA Alkaline Batteries)",
+        "Emergency Power": "9V Battery External Port",
+        "Warranty": "3 Years Godrej India Warranty"
+      },
+      "compatibility": "Standalone Smart Electronic Lock (No Wi-Fi bridge needed)",
+      "whats_in_the_box": [
+        "1 x Front Body",
+        "1 x Back Body",
+        "3 x RFID Cards",
+        "3 x Computerized Mechanical Keys",
+        "4 x AA Batteries",
+        "Mounting Template & Hardware"
+      ],
+      "image_url": "/products/p-16.webp",
+      "gallery_images": [
+        "/products/p-16.webp"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-06T10:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 30,
+      "discount_amount": 3491
+    },
+    {
+      "id": "p-17",
+      "slug": "yale-ydme-50-pro-smart-biometric-lock",
+      "brand": "Yale",
+      "model": "YDME 50 Pro Smart Lock",
+      "product_name": "Yale YDME 50 Pro Smart Digital Door Lock (Biometric Fingerprint)",
+      "category_slug": "smart-locks",
+      "mrp": 16999,
+      "selling_price": 11999,
+      "stock": 8,
+      "sku": "YAL-YDME-50P",
+      "rating": 4.8,
+      "review_count": 62,
+      "description": "Premium biometric smart door lock from Yale, global leader in lock manufacturing. Unlocks in under 0.5 seconds with 360° semiconductor fingerprint scanner. Sleek matte black mortise finish.",
+      "features": [
+        "Fast 0.5s Semiconductor Fingerprint Scanner (Stores up to 100 prints)",
+        "Smart Touch Keypad with Fake PIN protection to foil onlookers",
+        "Emergency USB Type-C charging port for dead batteries",
+        "Heavy duty stainless steel mortise latch mechanism"
+      ],
+      "specifications": {
+        "Door Thickness": "35mm - 65mm",
+        "Lock Body": "European Mortise Stainless Steel",
+        "Batteries": "4 x AA Alkaline (Included)",
+        "Finish": "Zinc Alloy Matte Black",
+        "Warranty": "2 Years Yale India Warranty"
+      },
+      "compatibility": "Standalone Biometric / Optional Yale Access Wi-Fi Module",
+      "whats_in_the_box": [
+        "1 x Front Escutcheon",
+        "1 x Back Escutcheon",
+        "Mortise Lock Body & Striker",
+        "2 x Mechanical Override Keys",
+        "2 x RFID Tags",
+        "4 x AA Batteries",
+        "Manual"
+      ],
+      "image_url": "/products/p-17.png",
+      "gallery_images": [
+        "/products/p-17.png"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T13:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 29,
+      "discount_amount": 5000
+    },
+    {
+      "id": "p-18",
+      "slug": "tapo-t110-smart-contact-sensor",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo T110",
+      "product_name": "Tapo T110 Smart Contact Sensor (Door / Window)",
+      "category_slug": "smart-sensors",
+      "mrp": 1499,
+      "selling_price": 899,
+      "stock": 42,
+      "sku": "TAP-T110-SNS",
+      "rating": 4.7,
+      "review_count": 125,
+      "description": "Know the second your front door, balcony window, or medicine cabinet opens. Sends instant phone alerts and can trigger your smart lights to turn on automatically when you walk in.",
+      "features": [
+        "Sub-1GHz low-frequency wireless protocol for 3x longer battery life and range",
+        "Instant Real-Time Notifications upon open or close",
+        "Trigger automations: Open door -> Tapo bulb lights up automatically",
+        "1+ Year Battery Life with included CR2032 coin cell"
+      ],
+      "specifications": {
+        "Mounting": "Tool-free 3M adhesive tape",
+        "Battery": "CR2032 Coin Cell (Included)",
+        "Wireless": "868 / 922 MHz (Requires Tapo H100 Hub)",
+        "Warranty": "1 Year TP-Link India Warranty"
+      },
+      "compatibility": "Tapo H100 Smart Hub, Alexa, Google Home",
+      "whats_in_the_box": [
+        "1 x Tapo T110 Sensor Unit",
+        "1 x Magnet Bar",
+        "1 x CR2032 Battery",
+        "3M Adhesive Pad",
+        "Manual"
+      ],
+      "image_url": "/products/p-18.png",
+      "gallery_images": [
+        "/products/p-18.png"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-06T13:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 40,
+      "discount_amount": 600
+    },
+    {
+      "id": "p-19",
+      "slug": "tapo-t100-smart-motion-sensor",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo T100",
+      "product_name": "Tapo T100 Smart PIR Motion Sensor (120° Wide Angle)",
+      "category_slug": "smart-sensors",
+      "mrp": 1699,
+      "selling_price": 999,
+      "stock": 31,
+      "sku": "TAP-T100-MOT",
+      "rating": 4.6,
+      "review_count": 98,
+      "description": "Detects human motion up to 7 meters away with 120° field of view. Perfect for hallways, staircases, and bathrooms to automatically illuminate pathways at night.",
+      "features": [
+        "Wide 120° detection coverage up to 7 meters range",
+        "Custom sensitivity settings to prevent false alarms from small pets",
+        "Battery lasts over 2 years on standard CR2450 cell",
+        "Adjustable magnetic swivel mount"
+      ],
+      "specifications": {
+        "Detection Angle": "120 Degrees",
+        "Detection Range": "Up to 7 Meters",
+        "Battery": "CR2450 (Included, ~2 Years Life)",
+        "Requires": "Tapo H100 Smart Hub",
+        "Warranty": "1 Year TP-Link Warranty"
+      },
+      "compatibility": "Tapo H100 Hub, Tapo App, Alexa",
+      "whats_in_the_box": [
+        "1 x Tapo T100 Motion Sensor",
+        "Magnetic Base",
+        "3M Tape",
+        "CR2450 Battery",
+        "Manual"
+      ],
+      "image_url": "/products/p-19.png",
+      "gallery_images": [
+        "/products/p-19.png"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T11:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 41,
+      "discount_amount": 700
+    },
+    {
+      "id": "p-20",
+      "slug": "xiaomi-temperature-humidity-monitor-2",
+      "brand": "Xiaomi",
+      "model": "Mi Temp & Humidity Monitor 2",
+      "product_name": "Xiaomi Smart Temperature and Humidity Monitor 2",
+      "category_slug": "smart-sensors",
+      "mrp": 999,
+      "selling_price": 599,
+      "stock": 55,
+      "sku": "XIA-TH-MON2",
+      "rating": 4.7,
+      "review_count": 320,
+      "description": "Equipped with ultra-sensitive Swiss Sensirion sensor accurate to 0.1°C and 1% RH. Clear 1.5-inch LCD display with comfort emoticon expression. Syncs historical graphs via Bluetooth.",
+      "features": [
+        "High precision Swiss Sensirion digital sensor",
+        "Visual comfort emoticon (Happy face / Sad face based on climate comfort)",
+        "Baby Mode: Notifies if nursery temp/humidity goes outside ideal limits",
+        "Ultra-low consumption: 1 CR2032 battery lasts an entire year"
+      ],
+      "specifications": {
+        "Display": "1.5 inch LCD Screen",
+        "Temperature Range": "0°C to 60°C (±0.1°C)",
+        "Humidity Range": "0% to 99% RH (±1% RH)",
+        "Battery": "1 x CR2032 Battery",
+        "Warranty": "6 Months Xiaomi Warranty"
+      },
+      "compatibility": "Mi Home App, Bluetooth BLE",
+      "whats_in_the_box": [
+        "1 x Mi Temp Monitor 2",
+        "Wall Sticker",
+        "User Manual"
+      ],
+      "image_url": "/products/p-20.jpg",
+      "gallery_images": [
+        "/products/p-20.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T07:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 40,
+      "discount_amount": 400
+    },
+    {
+      "id": "p-21",
+      "slug": "qubo-smart-smoke-detector",
+      "brand": "Qubo",
+      "model": "Qubo Smoke Detector",
+      "product_name": "Qubo Smart Smoke Detector with 85dB Siren & Mobile Alerts",
+      "category_slug": "smart-sensors",
+      "mrp": 2490,
+      "selling_price": 1490,
+      "stock": 20,
+      "sku": "QUB-SMK-DET",
+      "rating": 4.5,
+      "review_count": 51,
+      "description": "Safeguard your kitchen and home from fire hazards. Photoelectric optical smoke sensor catches smoldering smoke instantly and sounds an ear-piercing 85dB siren while alerting your phone.",
+      "features": [
+        "Photoelectric sensor responds rapidly to hazardous smoke",
+        "Ear-piercing 85dB local acoustic siren wakes sleeping occupants",
+        "Sends priority emergency push alert directly to family phones",
+        "Dust and insect-proof maze design prevents false alarms"
+      ],
+      "specifications": {
+        "Sound Output": "85dB at 3 Meters",
+        "Battery": "CR123A (Up to 3 Years Standby)",
+        "Operating Temp": "-10°C to 55°C",
+        "Warranty": "1 Year Qubo India Warranty"
+      },
+      "compatibility": "Qubo Smart App, Alexa",
+      "whats_in_the_box": [
+        "1 x Qubo Smoke Detector",
+        "Mounting Bracket & Screws",
+        "Battery",
+        "User Manual"
+      ],
+      "image_url": "/products/p-21.svg",
+      "gallery_images": [
+        "/products/p-21.svg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-05T12:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 40,
+      "discount_amount": 1000
+    },
+    {
+      "id": "p-22",
+      "slug": "oakter-wifi-smart-universal-remote-ir-blaster",
+      "brand": "Oakter",
+      "model": "Oakter WiFi Touchless IR",
+      "product_name": "Oakter WiFi Smart Universal Remote IR Blaster (All Remotes in One)",
+      "category_slug": "smart-control",
+      "mrp": 2490,
+      "selling_price": 1199,
+      "stock": 48,
+      "sku": "OAK-IR-BLAST",
+      "rating": 4.6,
+      "review_count": 384,
+      "description": "Replace all the plastic remotes lying on your table. Controls your TV, Split AC, Set-Top Box (Tata Play, Airtel Digital TV, Dish TV), and Soundbar from your phone or using voice commands with Alexa.",
+      "features": [
+        "Supports 100,000+ Indian appliance brands and remotes out of the box",
+        "360° Omni-directional IR blasting covers an entire room",
+        "DIY Learning function can clone non-standard Indian remotes",
+        "Say 'Alexa, turn on AC to 24 degrees' and it just works"
+      ],
+      "specifications": {
+        "IR Frequency": "38 kHz",
+        "IR Range": "Up to 10 Meters (Line of Sight)",
+        "Power Input": "5V DC Micro USB (500mA)",
+        "Wireless": "Wi-Fi 2.4GHz",
+        "Warranty": "1 Year Oakter India Warranty"
+      },
+      "compatibility": "Amazon Alexa, Google Assistant, Oakter App",
+      "whats_in_the_box": [
+        "1 x Oakter IR Blaster",
+        "Micro USB Power Cable",
+        "Power Adapter",
+        "Manual"
+      ],
+      "image_url": "/products/p-22.png",
+      "gallery_images": [
+        "/products/p-22.png"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T16:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 52,
+      "discount_amount": 1291
+    },
+    {
+      "id": "p-23",
+      "slug": "tapo-h100-smart-iot-hub-chime",
+      "brand": "TP-Link / Tapo",
+      "model": "Tapo H100",
+      "product_name": "Tapo H100 Smart IoT Hub with 90dB Built-in Chime",
+      "category_slug": "smart-control",
+      "mrp": 2499,
+      "selling_price": 1499,
+      "stock": 22,
+      "sku": "TAP-H100-HUB",
+      "rating": 4.8,
+      "review_count": 142,
+      "description": "The central brain for all Tapo battery-powered sensors and buttons. Plugs directly into standard wall socket. Features a loud 90dB siren that acts as an alarm or doorbell chime.",
+      "features": [
+        "Connects up to 64 Tapo sensors and buttons simultaneously",
+        "Low-power Sub-1GHz protocol keeps sensors running for years",
+        "90dB Alarm Siren with 19 customizable ringtones",
+        "Works as a smart doorbell chime when paired with smart buttons"
+      ],
+      "specifications": {
+        "Capacity": "Up to 64 Devices",
+        "Siren Volume": "90 dB",
+        "Power Supply": "100-240V AC Direct Wall Plug",
+        "Warranty": "1 Year TP-Link India Warranty"
+      },
+      "compatibility": "All Tapo Sub-1GHz sensors, Tapo App",
+      "whats_in_the_box": [
+        "1 x Tapo H100 Smart Hub",
+        "Quick Start Guide"
+      ],
+      "image_url": "/products/p-23.png",
+      "gallery_images": [
+        "/products/p-23.png"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-06T17:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 40,
+      "discount_amount": 1000
+    },
+    {
+      "id": "p-24",
+      "slug": "wipro-smart-4-gang-touch-switch-board",
+      "brand": "Wipro",
+      "model": "Wipro 4-Touch Smart Switch",
+      "product_name": "Wipro Smart 4-Gang Touch Switch Board with Wi-Fi (Modular Fit)",
+      "category_slug": "smart-control",
+      "mrp": 4990,
+      "selling_price": 2999,
+      "stock": 16,
+      "sku": "WIP-SW-4GANG",
+      "rating": 4.5,
+      "review_count": 67,
+      "description": "Retrofit your existing Roma / Crabtree modular switch plate without rewiring. Features elegant toughened crystal glass touch keys with soft LED backlights.",
+      "features": [
+        "Fits standard Indian modular metal/plastic concealed boxes",
+        "4 Independent Smart Switches (Supports fans, lights, chandeliers)",
+        "Capacitive Touch Glass with subtle blue LED indicator",
+        "Manual touch override continues to work even if Wi-Fi goes down"
+      ],
+      "specifications": {
+        "Number of Gangs": "4 Switches",
+        "Max Load per Switch": "500W Resistive / 150W Inductive",
+        "Panel Material": "Tempered Scratch-Resistant Crystal Glass",
+        "Input Voltage": "110-240V AC with Neutral wire required",
+        "Warranty": "2 Years Wipro Brand Warranty"
+      },
+      "compatibility": "Wipro Next App, Alexa, Google Home",
+      "whats_in_the_box": [
+        "1 x 4-Gang Touch Switch Module",
+        "Screws & Face Plate",
+        "Wiring Diagram"
+      ],
+      "image_url": "/products/p-24.jpg",
+      "gallery_images": [
+        "/products/p-24.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T08:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 40,
+      "discount_amount": 1991
+    },
+    {
+      "id": "p-25",
+      "slug": "amazon-echo-dot-5th-gen-smart-speaker",
+      "brand": "Amazon Echo",
+      "model": "Echo Dot (5th Gen, 2023 Release)",
+      "product_name": "Amazon Echo Dot (5th Gen) Smart Speaker with Alexa (Deeper Bass)",
+      "category_slug": "smart-entertainment",
+      "mrp": 5499,
+      "selling_price": 4449,
+      "stock": 25,
+      "sku": "AMZ-DOT-5GEN",
+      "rating": 4.8,
+      "review_count": 980,
+      "description": "The most popular smart speaker in India. Best-sounding Echo Dot yet with clearer vocals, deeper bass, and built-in motion & temperature sensors to automate your home routines.",
+      "features": [
+        "Ask Alexa to play Bollywood hits, devotional songs, or cricket scores in English and Hindi",
+        "Control thousands of smart lights, plugs, and TVs with your voice",
+        "Built-in ultrasound motion sensor can turn on lights when you enter the room",
+        "Tap gesture control on top to snooze alarms or pause music"
+      ],
+      "specifications": {
+        "Audio": "1.73-inch (44 mm) front-firing speaker",
+        "Sensors": "Ultrasound Motion Detection, Temperature Sensor",
+        "Microphones": "Multi-microphone array with mic-off privacy button",
+        "Bluetooth": "Advanced A2DP audio streaming",
+        "Warranty": "1 Year Amazon India Warranty"
+      },
+      "compatibility": "Alexa Skills, Spotify, Amazon Music, Apple Music, JioSaavn",
+      "whats_in_the_box": [
+        "1 x Echo Dot (5th Gen)",
+        "Power Adapter (15W)",
+        "Quick Start Guide"
+      ],
+      "image_url": "/products/p-25.jpg",
+      "gallery_images": [
+        "/products/p-25.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T06:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 19,
+      "discount_amount": 1050
+    },
+    {
+      "id": "p-26",
+      "slug": "google-nest-mini-2nd-gen-smart-speaker",
+      "brand": "Google Nest",
+      "model": "Nest Mini (2nd Gen)",
+      "product_name": "Google Nest Mini (2nd Gen) Smart Speaker with Google Assistant",
+      "category_slug": "smart-entertainment",
+      "mrp": 4499,
+      "selling_price": 3499,
+      "stock": 20,
+      "sku": "GOO-NEST-MINI2",
+      "rating": 4.7,
+      "review_count": 460,
+      "description": "Powered by the Google Assistant. Recognizes individual voices of up to 6 family members with Voice Match. Integrated wall-mount slot makes it easy to hang in any room.",
+      "features": [
+        "2x Stronger Bass than the original Google Home Mini",
+        "Voice Match: Personalized calendar, commute, and reminders for each family member",
+        "Controls lights, cameras, and broadcasts messages across the house",
+        "Top fabric crafted from 100% recycled plastic bottles"
+      ],
+      "specifications": {
+        "Speaker": "40 mm driver with 360-degree sound",
+        "Microphones": "3 Far-field microphones with Voice Match technology",
+        "Wall Mount": "Integrated screw hole",
+        "Warranty": "1 Year Google India Warranty"
+      },
+      "compatibility": "Google Assistant, YouTube Music, Spotify, Gaana",
+      "whats_in_the_box": [
+        "1 x Google Nest Mini",
+        "Power Adapter & Cable",
+        "Documentation"
+      ],
+      "image_url": "/products/p-26.jpg",
+      "gallery_images": [
+        "/products/p-26.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-06T15:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 22,
+      "discount_amount": 1000
+    },
+    {
+      "id": "p-27",
+      "slug": "realme-smart-tv-stick-4k",
+      "brand": "realme",
+      "model": "realme 4K Google TV Stick",
+      "product_name": "realme Smart TV Stick 4K (Google TV, HDR10+, Voice Remote)",
+      "category_slug": "smart-entertainment",
+      "mrp": 4699,
+      "selling_price": 2999,
+      "stock": 30,
+      "sku": "RLM-STICK-4K",
+      "rating": 4.6,
+      "review_count": 215,
+      "description": "Convert any standard HDMI television into a smart 4K Google TV. Stream Netflix, Prime Video, Hotstar, and YouTube with crystal-clear 4K 60fps and HDR10+ support.",
+      "features": [
+        "Google TV OS with personalized movie & show recommendations",
+        "4K 60fps streaming with HDR10+ and HDMI 2.1 support",
+        "Built-in Google Assistant with Bluetooth Voice Remote",
+        "Chromecast Built-in to cast photos and videos from phone"
+      ],
+      "specifications": {
+        "Output Resolution": "4K (3840 x 2160) at 60fps",
+        "Processor": "Quad-core ARM Cortex-A35 with 2GB RAM",
+        "Storage": "8GB ROM",
+        "Ports": "HDMI 2.1 Male, Micro-USB Power Port",
+        "Warranty": "1 Year realme India Warranty"
+      },
+      "compatibility": "Google TV, Netflix, Disney+ Hotstar, Prime Video, YouTube",
+      "whats_in_the_box": [
+        "1 x 4K TV Stick",
+        "1 x HDMI Extender Cable",
+        "1 x Voice Remote",
+        "Power Adapter",
+        "USB Cable"
+      ],
+      "image_url": "/products/p-27.jpg",
+      "gallery_images": [
+        "/products/p-27.jpg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-07T17:00:00.000Z",
+      "is_active": true,
+      "is_combo": false,
+      "discount_percentage": 36,
+      "discount_amount": 1700
+    },
+    {
+      "id": "p-28",
+      "slug": "gharva-smart-starter-kit",
+      "brand": "SMARTIFY Curated",
+      "model": "GHARVA-KIT-START",
+      "product_name": "SMARTIFY Smart Starter Kit (Bulb + 10A Plug + IR Blaster)",
+      "category_slug": "smart-home-combos",
+      "mrp": 3997,
+      "selling_price": 1999,
+      "stock": 25,
+      "sku": "GH-STARTER-KIT",
+      "rating": 4.9,
+      "review_count": 148,
+      "description": "The ultimate beginner pack for any Indian flat or room. Includes 1x Philips Wiz 9W Multicolor Smart Bulb, 1x Portronics 10A Smart Plug, and 1x Oakter Universal IR Remote. Automate your lights, TV, and fan in 10 minutes!",
+      "features": [
+        "Complete Room Automation in one box",
+        "Voice control with Alexa & Google Assistant",
+        "Controls your TV, AC, lamps, and phone charger",
+        "Save ₹1,998 compared to buying components individually!"
+      ],
+      "specifications": {
+        "Includes": "1x Smart 9W Bulb + 1x 10A Smart Plug + 1x Universal IR Remote",
+        "Installation Time": "Under 10 Minutes (No electrician required)",
+        "Warranty": "Full 1-Year Comprehensive SMARTIFY Warranty"
+      },
+      "compatibility": "Alexa, Google Assistant, Smart Life, WiZ",
+      "whats_in_the_box": [
+        "1 x Philips Wiz 9W Smart LED Bulb",
+        "1 x Portronics 10A Smart Plug",
+        "1 x Oakter Universal IR Remote Blaster",
+        "SMARTIFY Quick Setup Guide Booklet"
+      ],
+      "image_url": "/products/p-28.svg",
+      "gallery_images": [
+        "/products/p-28.svg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T09:30:00.000Z",
+      "is_active": true,
+      "is_combo": true,
+      "combo_regular_price": 3997,
+      "discount_percentage": 50,
+      "discount_amount": 1998
+    },
+    {
+      "id": "p-29",
+      "slug": "gharva-360-home-security-kit",
+      "brand": "SMARTIFY Curated",
+      "model": "GHARVA-KIT-SEC",
+      "product_name": "Gharva 360° Home Security Kit (Camera + 2x Door Sensors + Hub)",
+      "category_slug": "smart-home-combos",
+      "mrp": 8796,
+      "selling_price": 4899,
+      "stock": 18,
+      "sku": "GH-SECURITY-KIT",
+      "rating": 4.9,
+      "review_count": 112,
+      "description": "Complete perimeter security for Indian apartments and villas. Comes with 1x Tapo C200 Pan/Tilt Camera, 2x Tapo T110 Door/Window Contact Sensors, and 1x Tapo H100 Smart Hub with 90dB Siren.",
+      "features": [
+        "Complete 360-degree perimeter protection",
+        "Instant phone siren alarm if main door opens unexpectedly",
+        "Live video verification directly on your smartphone",
+        "Save ₹3,897 with this combo pack"
+      ],
+      "specifications": {
+        "Includes": "1x Tapo C200 Cam + 2x Tapo T110 Sensors + 1x Tapo H100 Hub",
+        "Alarm Volume": "90 dB Built-in Siren",
+        "Warranty": "2 Years Official Warranty"
+      },
+      "compatibility": "Alexa, Google Home, Tapo Care Cloud, Local SD Storage",
+      "whats_in_the_box": [
+        "1 x Tapo C200 FHD Pan/Tilt Wi-Fi Camera",
+        "2 x Tapo T110 Door/Window Sensors",
+        "1 x Tapo H100 Smart Hub with Siren",
+        "Mounting Accessories & Batteries"
+      ],
+      "image_url": "/products/p-29.svg",
+      "gallery_images": [
+        "/products/p-29.svg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T09:30:00.000Z",
+      "is_active": true,
+      "is_combo": true,
+      "combo_regular_price": 8796,
+      "discount_percentage": 44,
+      "discount_amount": 3897
+    },
+    {
+      "id": "p-30",
+      "slug": "gharva-energy-saving-kit",
+      "brand": "SMARTIFY Curated",
+      "model": "GHARVA-KIT-ENRG",
+      "product_name": "Gharva Energy Saving Kit (2x 16A Plugs + 1x Smart Bulb)",
+      "category_slug": "smart-home-combos",
+      "mrp": 5470,
+      "selling_price": 2199,
+      "stock": 22,
+      "sku": "GH-ENERGY-KIT",
+      "rating": 4.8,
+      "review_count": 85,
+      "description": "Designed to slash your monthly power bill. Includes 2x Wipro 16A Heavy Duty Energy Monitoring Smart Plugs (for Geyser & AC) and 1x Wipro 9W Smart LED Bulb. Pay for itself in 3 months of saved electricity!",
+      "features": [
+        "Schedule heavy power consumers: Geyser & AC timers",
+        "Real-time electricity unit tracking and expense forecasting",
+        "Auto-cut off prevents water heater dry run and overheating",
+        "Save ₹3,271 with this combo"
+      ],
+      "specifications": {
+        "Includes": "2x Wipro 16A Smart Plugs + 1x Wipro 9W Smart LED Bulb",
+        "Max Load Capacity": "16A (3500W each)",
+        "Warranty": "1 Year Manufacturer Warranty"
+      },
+      "compatibility": "Alexa, Google Home, Wipro Next App",
+      "whats_in_the_box": [
+        "2 x Wipro 16A Smart Plugs with Power Monitoring",
+        "1 x Wipro Garnet 9W Smart LED Bulb",
+        "Energy Saving Guide Card"
+      ],
+      "image_url": "/products/p-30.svg",
+      "gallery_images": [
+        "/products/p-30.svg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-08T09:30:00.000Z",
+      "is_active": true,
+      "is_combo": true,
+      "combo_regular_price": 5470,
+      "discount_percentage": 60,
+      "discount_amount": 3271
+    },
+    {
+      "id": "p-31",
+      "slug": "gharva-ambiance-party-kit",
+      "brand": "SMARTIFY Curated",
+      "model": "GHARVA-KIT-AMB",
+      "product_name": "Gharva Ambiance Kit (2x Tapo Multicolor Bulbs + 5m Light Strip)",
+      "category_slug": "smart-home-combos",
+      "mrp": 5600,
+      "selling_price": 300,
+      "stock": 14,
+      "sku": "GH-AMBIANCE-KIT",
+      "rating": 4.9,
+      "review_count": 92,
+      "description": "Transform your living room or bedroom into a cinematic theatre or vibrant party zone. Includes 2x Tapo L530E Multicolor Smart Bulbs and 1x Tapo L900-5 (5m) Wi-Fi Light Strip.",
+      "features": [
+        "16 Million synchronized RGB colors across bulbs and strip",
+        "Music sync mode dances to music beats and video games",
+        "Preset festival modes for Diwali, Holi, and Birthday parties",
+        "Save ₹2,898 over individual purchase"
+      ],
+      "specifications": {
+        "Includes": "2x Tapo L530E (B22) Bulbs + 1x Tapo L900-5 (5-meter) LED Strip",
+        "Warranty": "1 Year TP-Link India Warranty"
+      },
+      "compatibility": "Alexa, Google Assistant, Tapo App",
+      "whats_in_the_box": [
+        "2 x Tapo L530E Smart Wi-Fi Bulbs",
+        "1 x Tapo L900-5 LED Strip (5m) with Power Adapter",
+        "Installation Manuals"
+      ],
+      "image_url": "/products/p-31.svg",
+      "gallery_images": [
+        "/products/p-31.svg"
+      ],
+      "price_source": "admin",
+      "last_price_updated": "2026-10-09T16:46:38.021Z",
+      "is_active": true,
+      "is_combo": true,
+      "combo_regular_price": 6097,
+      "discount_percentage": 48,
+      "discount_amount": 2898,
+      "changed_by": "SMARTIFY Admin",
+      "updated_at": "2026-10-09T16:46:38.021Z"
+    }
+  ],
+  "price_history": [],
+  "inventory_logs": [],
+  "addresses": [],
+  "carts": {},
+  "orders": [],
+  "payments": [],
+  "reviews": [],
+  "wishlist": {},
+  "coupons": [
+    {
+      "code": "WELCOME100",
+      "discount_type": "flat",
+      "discount_value": 100,
+      "min_order_value": 499,
+      "is_active": true
+    },
+    {
+      "code": "SMART50",
+      "discount_type": "flat",
+      "discount_value": 50,
+      "min_order_value": 299,
+      "is_active": true
+    },
+    {
+      "code": "GHARVA10",
+      "discount_type": "percentage",
+      "discount_value": 10,
+      "min_order_value": 999,
+      "is_active": true
+    }
+  ],
+  "pincodes": [
+    {
+      "pincode": "110001",
+      "city": "New Delhi",
+      "state": "Delhi",
+      "is_serviceable": true,
+      "estimated_days": "1-2 days"
+    },
+    {
+      "pincode": "110020",
+      "city": "Okhla, New Delhi",
+      "state": "Delhi",
+      "is_serviceable": true,
+      "estimated_days": "1-2 days"
+    },
+    {
+      "pincode": "122001",
+      "city": "Gurugram",
+      "state": "Haryana",
+      "is_serviceable": true,
+      "estimated_days": "1-2 days"
+    },
+    {
+      "pincode": "201301",
+      "city": "Noida",
+      "state": "Uttar Pradesh",
+      "is_serviceable": true,
+      "estimated_days": "1-2 days"
+    },
+    {
+      "pincode": "400001",
+      "city": "Mumbai South",
+      "state": "Maharashtra",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "400050",
+      "city": "Bandra, Mumbai",
+      "state": "Maharashtra",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "400076",
+      "city": "Powai, Mumbai",
+      "state": "Maharashtra",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "411001",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "560001",
+      "city": "Bengaluru Central",
+      "state": "Karnataka",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "560034",
+      "city": "Koramangala, Bengaluru",
+      "state": "Karnataka",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "560100",
+      "city": "Electronic City, Bengaluru",
+      "state": "Karnataka",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "500001",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "500081",
+      "city": "Hitech City, Hyderabad",
+      "state": "Telangana",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "600001",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "is_serviceable": true,
+      "estimated_days": "2-4 days"
+    },
+    {
+      "pincode": "700001",
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "is_serviceable": true,
+      "estimated_days": "2-4 days"
+    },
+    {
+      "pincode": "380001",
+      "city": "Ahmedabad",
+      "state": "Gujarat",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "302001",
+      "city": "Jaipur",
+      "state": "Rajasthan",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "226001",
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "is_serviceable": true,
+      "estimated_days": "2-3 days"
+    },
+    {
+      "pincode": "160017",
+      "city": "Chandigarh",
+      "state": "Chandigarh",
+      "is_serviceable": true,
+      "estimated_days": "1-2 days"
+    }
+  ],
+  "order_counter": 1
+}
